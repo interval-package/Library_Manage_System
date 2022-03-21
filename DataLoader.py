@@ -8,7 +8,7 @@ import warnings
 class DataBaseAct(object):
     # ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 
-    data_path = os.path.join(os.getcwd(), 'data', 'database', 'library_info_core.db')
+    data_path = os.path.join(os.getcwd(), 'data', 'library_info_core.db')
 
     def __init__(self, action: str):
         self.data_path = os.path.join(os.getcwd(), 'data', 'database', 'library_info_core.db')
