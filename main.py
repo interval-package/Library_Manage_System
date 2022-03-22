@@ -1,8 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QApplication
 from DataLoader import DataBaseAct, sql
-from Window_Classes.MainWindow.MainWindow_Obj import MainWindow
+from Window_Classes.Window_Main import MainWindow
+
 
 if __name__ == '__main__':
     # 连接数据库，还是不要那么跳进行with操作了

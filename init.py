@@ -156,6 +156,7 @@ class MainWindow(QtWidgets.QMainWindow):
         for action in self.menuBar().actions():
             action.setEnabled(action.data() != index)
 
+
 if __name__ == '__main__':
     # 初始化软件，这是必要操作
     app = QtWidgets.QApplication(sys.argv)
