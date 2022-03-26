@@ -54,9 +54,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def LoginPage_Login(self):
         User = self.LoginPage.Login()
-        if self.User is None:
+        if User is not None:
+            self.UserPage.SetUser(User)
+            self.switchPage(1)
             pass
-            # msg = QMessageBox()
-            # msg.exec_()
-            # QMessageBox.information(msg, title="Login Failed", text="info")
-        self.switchPage(1)
+
