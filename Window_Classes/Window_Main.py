@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QStackedWidget, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QStackedWidget
 from PyQt5 import QtGui
 
 from Window_Classes.MainWindow.MainWindow import Ui_MainWindow
@@ -7,7 +7,7 @@ from Window_Classes.LoginPage.LoginPageWrapper import LoginPage
 # except ModuleNotFoundError:
 #     from MainWindow_Login import Ui_MainWindow_Login
 
-from Window_Classes.UtilPages.UserPage.UserPageWrapper import UserPage
+from Window_Classes.UserPage.UserPageWrapper import UserPage
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):

@@ -1,6 +1,8 @@
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 
-from Window_Classes.UtilPages.UserPage.UserPage import *
+from Window_Classes.UserPage.UserPage import *
+
+from kernel.Quary_Info import Query_UserRank, Query_BookRank
 
 
 class UserPage(QtWidgets.QWidget, Ui_Form):
@@ -11,7 +13,8 @@ class UserPage(QtWidgets.QWidget, Ui_Form):
         self.icon = QIcon()
         self.icon.addPixmap(QtGui.QPixmap("images/icon_music.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 
-        self.model = QStandardItemModel()
+        self.updateBookRankPage()
+        self.updateUserRankPage()
 
     def SetUser(self, user):
         self.User = user
@@ -51,5 +54,40 @@ class UserPage(QtWidgets.QWidget, Ui_Form):
             self.RentedBookTable.setModel(model)
         except Exception as e:
             print(repr(e))
+        pass
 
+    def updateBookRankPage(self) -> None:
+        try:
+            model = QStandardItemModel()
+            model.setHorizontalHeaderLabels(['BookId', 'BookName', 'times', 'Stock', 'Price', 'TypeName'])
+            for his in Query_BookRank():
+                row = []
+                for detail in his:
+                    if isinstance(detail, int):
+                        row.append(QStandardItem(str(detail)))
+                    else:
+                        row.append(QStandardItem(detail))
+                model.appendRow(row)
+            self.BookRankTable.setModel(model)
+        except Exception as e:
+            print(repr(e))
+        pass
+
+    def updateUserRankPage(self) -> None:
+        try:
+            model = QStandardItemModel()
+            model.setHorizontalHeaderLabels(['UserName', 'UserId', 'times'])
+            for his in Query_UserRank():
+                row = []
+                for detail in his:
+                    if isinstance(detail, int):
+                        row.append(QStandardItem(str(detail)))
+                    else:
+                        row.append(QStandardItem(detail))
+                model.appendRow(row)
+            self.UserRankTable.setModel(model)
+            # 水平方向标签拓展剩下的窗口部分，填满表格
+            self.UserRankTable.horizontalHeader().setStretchLastSection(True)
+        except Exception as e:
+            print(repr(e))
         pass
