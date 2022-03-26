@@ -36,13 +36,16 @@
      <number>50</number>
     </property>
     <item row="0" column="0">
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="QTabWidget" name="UserPageTabContainer">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="UserInfo">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <attribute name="title">
-        <string>Tab 1</string>
+        <string>User Info</string>
        </attribute>
        <widget class="QWidget" name="gridLayoutWidget_3">
         <property name="geometry">
@@ -53,12 +56,25 @@
           <height>471</height>
          </rect>
         </property>
-        <layout class="QGridLayout" name="gridLayout_3"/>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <property name="leftMargin">
+          <number>50</number>
+         </property>
+         <property name="topMargin">
+          <number>50</number>
+         </property>
+         <property name="rightMargin">
+          <number>50</number>
+         </property>
+         <property name="bottomMargin">
+          <number>50</number>
+         </property>
+        </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="BookRank">
        <attribute name="title">
-        <string>Tab 2</string>
+        <string>Book Rank</string>
        </attribute>
        <widget class="QWidget" name="gridLayoutWidget_2">
         <property name="geometry">
@@ -70,34 +86,75 @@
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
-         <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit"/>
-         </item>
-         <item row="2" column="0" colspan="2">
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>TextLabel</string>
-           </property>
+         <property name="leftMargin">
+          <number>50</number>
+         </property>
+         <property name="topMargin">
+          <number>50</number>
+         </property>
+         <property name="rightMargin">
+          <number>50</number>
+         </property>
+         <property name="bottomMargin">
+          <number>50</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QListWidget" name="listWidget">
+           <item>
+            <property name="text">
+             <string>新建项目</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>新建项目</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>新建项目</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>新建项目</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>新建项目</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>新建项目</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>新建项目</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>新建项目</string>
+            </property>
+           </item>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QTableWidget" name="tableWidget"/>
+         <item row="0" column="1">
+          <widget class="QListView" name="listView"/>
+         </item>
+         <item row="0" column="2">
+          <widget class="QTableView" name="tableView"/>
          </item>
         </layout>
        </widget>
+      </widget>
+      <widget class="QWidget" name="UserRank">
+       <attribute name="title">
+        <string>User Rank</string>
+       </attribute>
       </widget>
      </widget>
     </item>

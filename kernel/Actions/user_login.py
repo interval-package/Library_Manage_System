@@ -16,13 +16,13 @@ class LoginProcess(object):
 
     # 验证用户身份
     @staticmethod
-    def User_Login_Certification(user_id: int, password) -> (bool, str):
+    def User_Login_Certification(user_id: str, password) -> (bool, str):
         with sql.connect(DataBaseAct.data_path) as conn:
             try:
                 cursor = conn.execute("""
                     select password from User
                     where User.UserID = %s
-                    """ % (str(user_id)))
+                    """ % (user_id))
             except sql.DatabaseError as e:
                 return False, "User not find, please check your UserId"
         for line in cursor:

@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QStackedWidget
+from PyQt5.QtWidgets import QMainWindow, QStackedWidget, QMessageBox
 from PyQt5 import QtGui
 
 from Window_Classes.MainWindow.MainWindow import Ui_MainWindow
@@ -21,11 +21,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 设置页面
         self.stackWidget = QStackedWidget()
 
-        # 设置登录界面
+        # 设置登录界面,0
         self.LoginPage = LoginPage()
         self.stackWidget.addWidget(self.LoginPage)
 
-        # 设置用户界面
+        # 设置信号与槽的连接-登录界面
+        self.LoginPage.LoginButton.clicked.connect(self.LoginPage_Login)
+
+        # 设置用户界面,1
         self.UserPage = UserPage()
         self.stackWidget.addWidget(self.UserPage)
 
@@ -48,10 +51,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def switchPage(self, index):
         self.stackWidget.setCurrentIndex(index)
-        for action in self.menuBar().actions():
-            action.setEnabled(action.data() != index)
 
-    def switchPageAction(self, action):
-        index = action.data()
-        if index is not None:
-            self.switchPage(index)
+    def LoginPage_Login(self):
+        User = self.LoginPage.Login()
+        if self.User is None:
+            pass
+            # msg = QMessageBox()
+            # msg.exec_()
+            # QMessageBox.information(msg, title="Login Failed", text="info")
+        self.switchPage(1)
