@@ -35,59 +35,66 @@
     <property name="bottomMargin">
      <number>75</number>
     </property>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
-    </item>
-    <item row="3" column="0">
-     <widget class="QListView" name="listView"/>
-    </item>
-    <item row="3" column="1">
-     <widget class="QListView" name="listView_2"/>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0" colspan="2">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0" colspan="2">
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QComboBox" name="comboBox"/>
-    </item>
     <item row="2" column="1">
      <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>TextLabel</string>
+       <string>Your books</string>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
      <widget class="QLabel" name="label_4">
       <property name="text">
-       <string>TextLabel</string>
+       <string>BookName</string>
       </property>
      </widget>
+    </item>
+    <item row="4" column="0" colspan="2">
+     <widget class="QPushButton" name="QueryButton">
+      <property name="text">
+       <string>Query</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0" colspan="2">
+     <widget class="QPushButton" name="RentButton">
+      <property name="text">
+       <string>Rent!</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="BookNameLine"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Able Books</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QComboBox" name="BookTypeCombo"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Book Type</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0" colspan="2">
+     <widget class="QPushButton" name="GoBackButton">
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QTableView" name="RentedBookView"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QTableView" name="BooksView"/>
     </item>
    </layout>
   </widget>

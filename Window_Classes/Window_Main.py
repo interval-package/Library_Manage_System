@@ -50,14 +50,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.stackWidget.addWidget(self.RentingPage)
 
         # 借阅逻辑
-        self.UserPage.RentButton.clicked.connect(lambda: self.switchPage(3))
+        self.UserPage.RentButton.clicked.connect(lambda: (self.switchPage(3),
+                                                          self.RentingPage.setUser(self.UserPage.User)))
+        self.RentingPage.GoBackButton.clicked.connect(lambda: self.switchPage(1))
 
         # 设置归还界面,4
         self.ReturnPage = ReturnPage()
         self.stackWidget.addWidget(self.ReturnPage)
 
         # 归还逻辑
-        self.UserPage.RentButton.clicked.connect(lambda: self.switchPage(4))
+        self.UserPage.ReturnButton.clicked.connect(lambda: self.switchPage(4))
 
         # 设置图标
         self.setIcon()
@@ -95,8 +97,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.switchPage(0)
         pass
 
-
 # def clicked_1(self):
 #     self.right_widget1.hide() # 隐藏界面1
 #     self.right_widget2.show() # 显示界面2
-

@@ -72,3 +72,50 @@ def Add_User(UserId, UserName, Role, Password):
                 values
                 (%s,%s,%d,%s)
             """ % (quote(UserId), UserName, Role, quote(Password)))
+
+
+def Query_BookType():
+    with sql.connect(data_path) as conn:
+        try:
+            cursor = conn.execute("""
+                select TypeName
+                from BookType
+                """)
+        except sql.DatabaseError as e:
+            # 先放这个，不能没有显示
+            cursor = None
+            print(repr(e))
+            pass
+        if cursor is not None:
+            res = cursor.fetchall()
+    return res
+
+
+def Query_Book(TypeName, BookInfo):
+    res = None
+    with sql.connect(data_path) as conn:
+        try:
+            cursor = conn.execute("""
+                select Book.BookName, Book.BookId
+                from Book, BookType
+                where Book.Type = BookType.TypeId and BookType.TypeName = {0}
+                and Book.BookName like '%{1}%' and Book.Stock > 0
+                """.format(quote(TypeName), BookInfo))
+        except sql.DatabaseError as e:
+            # 先放这个，不能没有显示
+            cursor = None
+            print("Query Fail", repr(e))
+            pass
+        if cursor is not None:
+            res = cursor.fetchall()
+    return res
+
+
+def Query_Rent(UserId, BookId):
+    with sql.connect(data_path) as conn:
+        conn.execute("""
+            insert into RentHistory
+            values
+            ({0},{1},date('now'),null)
+            """.format(quote(UserId), quote(BookId)))
+    pass

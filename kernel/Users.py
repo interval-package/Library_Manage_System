@@ -15,6 +15,9 @@ class BasicUser(object):
         self.RentHis = Query_UserRentingHis(self.id)
         pass
 
+    def updateRentHis(self):
+        self.RentHis = Query_UserRentingHis(self.id)
+
 
 def UserGet(pack) -> BasicUser:
     Uid, name, role, password = pack
