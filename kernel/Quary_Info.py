@@ -20,7 +20,6 @@ def Query_UserRentingHis(user_id):
             pass
         if cursor is not None:
             res = cursor.fetchall()
-        print(res)
     return res
 
 
@@ -42,7 +41,6 @@ def Query_BookRank():
             pass
         if cursor is not None:
             res = cursor.fetchall()
-        print(res)
     return res
 
 
@@ -64,5 +62,13 @@ def Query_UserRank():
             pass
         if cursor is not None:
             res = cursor.fetchall()
-        print(res)
     return res
+
+
+def Add_User(UserId, UserName, Role, Password):
+    with sql.connect(data_path) as conn:
+        conn.execute("""
+                insert into User
+                values
+                (%s,%s,%d,%s)
+            """ % (quote(UserId), UserName, Role, quote(Password)))
