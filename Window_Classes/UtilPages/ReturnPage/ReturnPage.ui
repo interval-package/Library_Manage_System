@@ -35,21 +35,7 @@
     <property name="bottomMargin">
      <number>50</number>
     </property>
-    <item row="3" column="1">
-     <widget class="QPushButton" name="ReturnButton">
-      <property name="text">
-       <string>Return!</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QPushButton" name="GoBackButton">
-      <property name="text">
-       <string>Go Back</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0" colspan="3">
+    <item row="2" column="0" colspan="4">
      <spacer name="horizontalSpacer">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -62,8 +48,22 @@
       </property>
      </spacer>
     </item>
-    <item row="1" column="0" colspan="3">
-     <widget class="QListView" name="listView"/>
+    <item row="1" column="0" colspan="4">
+     <widget class="QTableView" name="UnreturnedList"/>
+    </item>
+    <item row="0" column="0" colspan="4">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Here is your Renting History, select the one you want to return!</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QPushButton" name="ReturnButton">
+      <property name="text">
+       <string>Return!</string>
+      </property>
+     </widget>
     </item>
     <item row="3" column="0">
      <widget class="QLabel" name="label">
@@ -72,10 +72,17 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="0" colspan="3">
-     <widget class="QLabel" name="label_2">
+    <item row="3" column="3">
+     <widget class="QPushButton" name="GoBackButton">
       <property name="text">
-       <string>Here is your Renting History, select the one you want to return!</string>
+       <string>Go Back</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="RefreshButton">
+      <property name="text">
+       <string>Refresh</string>
       </property>
      </widget>
     </item>

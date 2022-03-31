@@ -23,6 +23,7 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
 
     def setUser(self, User):
         self.User = User
+        self.Query()
 
     def SetBookType(self):
         for his in Query_BookType():

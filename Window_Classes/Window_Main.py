@@ -50,8 +50,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.stackWidget.addWidget(self.RentingPage)
 
         # 借阅逻辑
-        self.UserPage.RentButton.clicked.connect(lambda: (self.switchPage(3),
-                                                          self.RentingPage.setUser(self.UserPage.User)))
+        self.UserPage.RentButton.clicked.connect(lambda: self.switchPage(3))
         self.RentingPage.GoBackButton.clicked.connect(lambda: self.switchPage(1))
 
         # 设置归还界面,4
@@ -85,7 +84,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def LoginPage_Login(self):
         User = self.LoginPage.Login()
         if User is not None:
+            # Deliver info via User
             self.UserPage.SetUser(User)
+            self.ReturnPage.SetUser(User)
+            self.RentingPage.setUser(User)
             self.switchPage(1)
             pass
 
