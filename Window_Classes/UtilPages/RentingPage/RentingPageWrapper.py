@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QHeaderView, QMessageBox
 
 from Window_Classes.UtilPages.RentingPage.RentingPage import Ui_RentingPage
 from PyQt5 import QtWidgets
-from kernel.Quary_Info import Query_BookType, Query_Book, Query_Rent
+from kernel.Quary_Info import Query_BookType, Query_Book, Add_RentHis
 
 
 class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
@@ -54,7 +54,7 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
         try:
             # self.BooksView.clear()
             model = QStandardItemModel()
-            model.setHorizontalHeaderLabels(['id', 'name'])
+            model.setHorizontalHeaderLabels(['name', 'id:Select here'])
             for his in Query_Book(Type, Name):
                 row = []
                 for detail in his:
@@ -76,7 +76,7 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
             BookId = self.BooksView.selectionModel().selectedIndexes()[0].data()
             UserId = self.User.id
             print(UserId, BookId)
-            Query_Rent(UserId, BookId)
+            Add_RentHis(UserId, BookId)
         except AttributeError as e:
             print("un inited error", repr(e))
             flag = False

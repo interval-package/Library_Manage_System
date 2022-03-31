@@ -60,6 +60,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # 归还逻辑
         self.UserPage.ReturnButton.clicked.connect(lambda: self.switchPage(4))
+        self.ReturnPage.ReturnButton.clicked.connect(lambda: self.switchPage(1))
+        self.ReturnPage.GoBackButton.clicked.connect(lambda: self.switchPage(1))
 
         # 设置图标
         self.setIcon()

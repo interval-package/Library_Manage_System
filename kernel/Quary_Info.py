@@ -54,7 +54,7 @@ def Query_UserRank():
                 group by UserId
                 )as temp
                 where User.UserId = temp.UserId
-                order by times""")
+                order by times desc""")
         except sql.DatabaseError as e:
             # 先放这个，不能没有显示
             cursor = None
@@ -63,15 +63,6 @@ def Query_UserRank():
         if cursor is not None:
             res = cursor.fetchall()
     return res
-
-
-def Add_User(UserId, UserName, Role, Password):
-    with sql.connect(data_path) as conn:
-        conn.execute("""
-                insert into User
-                values
-                (%s,%s,%d,%s)
-            """ % (quote(UserId), UserName, Role, quote(Password)))
 
 
 def Query_BookType():
@@ -111,7 +102,41 @@ def Query_Book(TypeName, BookInfo):
     return res
 
 
-def Query_Rent(UserId, BookId):
+def Query_UnReturned_Book(UserId):
+    res = None
+    with sql.connect(data_path) as conn:
+        try:
+            cursor = conn.execute("""
+                select User.UserId, User.UserName, RentHistory.BookId, Book.BookName, 
+                RentHistory.RentDay
+                from
+                RentHistory, User, Book
+                where 
+                User.UserId = RentHistory.UserId
+                and Book.BookId = RentHistory.BookId
+                and RentHistory.ReturnDate is null 
+                and User.UserId is '{}'
+                """.format(str(UserId)))
+        except sql.DatabaseError as e:
+            # 先放这个，不能没有显示
+            cursor = None
+            print("Query Fail", repr(e))
+            pass
+        if cursor is not None:
+            res = cursor.fetchall()
+    return res
+
+
+def Add_User(UserId, UserName, Role, Password):
+    with sql.connect(data_path) as conn:
+        conn.execute("""
+                insert into User
+                values
+                (%s,%s,%d,%s)
+            """ % (quote(UserId), UserName, Role, quote(Password)))
+
+
+def Add_RentHis(UserId, BookId):
     with sql.connect(data_path) as conn:
         conn.execute("""
             insert into RentHistory
