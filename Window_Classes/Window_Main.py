@@ -68,6 +68,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.SuperPage = SuperPage()
         self.stackWidget.addWidget(self.SuperPage)
         self.UserPage.SuperButton.clicked.connect(self.SuperUserAction)
+        self.SuperPage.SuperOptionsPage.GoBackButton.clicked.connect(lambda: self.switchPage(1))
 
         # 设置图标
         self.setIcon()
@@ -104,7 +105,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.Echo_Fail_Authority()
             else:
                 self.switchPage(5)
-                self.SuperPage.InitStack()
+                self.SuperPage.SwitchPageAction()
         except Exception as e:
             print(repr(e))
         pass
