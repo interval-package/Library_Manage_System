@@ -104,6 +104,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.Echo_Fail_Authority()
             else:
                 self.switchPage(5)
+                self.SuperPage.InitStack()
         except Exception as e:
             print(repr(e))
         pass

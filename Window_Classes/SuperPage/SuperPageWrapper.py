@@ -6,3 +6,6 @@ class SuperPage(QtWidgets.QWidget, Ui_SuperPage):
         super(SuperPage, self).__init__()
         self.setupUi(self)
         pass
+
+    def InitStack(self):
+        pass
