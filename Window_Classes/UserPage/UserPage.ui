@@ -121,6 +121,20 @@
              </property>
             </widget>
            </item>
+           <item>
+            <widget class="QPushButton" name="ExtendButton">
+             <property name="text">
+              <string>Extend</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="SuperButton">
+             <property name="text">
+              <string>Super</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
          <item>

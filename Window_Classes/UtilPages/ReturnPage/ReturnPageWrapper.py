@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QHeaderView
 
-from kernel.Quary_Info import Query_UnReturned_Book
+from kernel.Quary_Info import Query_UnReturned_Book, Modify_Return
 
 from Window_Classes.UtilPages.ReturnPage.ReturnPage import *
 
@@ -14,6 +14,7 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage):
         self.User = None
 
         self.RefreshButton.clicked.connect(self.updatePage)
+        self.ReturnButton.clicked.connect(self.ReturnBook)
 
         self.UnreturnedList.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
@@ -29,8 +30,12 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage):
         self.User.updateRentHis()
         model = QStandardItemModel()
         model.setHorizontalHeaderLabels(['id', 'name', 'Book Id', 'Book name', 'RentDay'])
+        print(self.User.id)
         try:
-            for his in Query_UnReturned_Book(self.User.id):
+            temp = Query_UnReturned_Book(self.User.id)
+            if len(temp) == 0:
+                print("find nothing")
+            for his in temp:
                 row = []
                 for detail in his:
                     if isinstance(detail, int):
@@ -44,3 +49,14 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage):
             print(repr(e))
         self.UnreturnedList.setModel(model)
         pass
+
+    def ReturnBook(self):
+        try:
+            tar = []
+            for i in [0, 2, 4]:
+                tar.append(self.UnreturnedList.selectionModel().selectedRows(i)[0].data())
+            Modify_Return(tar)
+            # print(self.UnreturnedList.item(index, 0).text())
+        except Exception as e:
+            print(repr(e))
+        self.updatePage()

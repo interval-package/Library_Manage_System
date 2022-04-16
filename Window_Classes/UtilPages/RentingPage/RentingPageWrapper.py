@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QHeaderView, QMessageBox
 
 from Window_Classes.UtilPages.RentingPage.RentingPage import Ui_RentingPage
 from PyQt5 import QtWidgets
-from kernel.Quary_Info import Query_BookType, Query_Book, Add_RentHis
+from kernel.Quary_Info import Query_BookType, Query_Book, Add_RentHis, RentHis_Certification
 
 
 class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
@@ -74,10 +74,14 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
     def Rent(self):
         flag = True
         try:
-            BookId = self.BooksView.selectionModel().selectedIndexes()[0].data()
+            BookId = self.BooksView.selectionModel().selectedIndexes()[-1].data()
             UserId = self.User.id
-            print(UserId, BookId)
-            Add_RentHis(UserId, BookId)
+            if RentHis_Certification(UserId):
+                print(UserId, BookId)
+                Add_RentHis(UserId, BookId)
+            else:
+                self.Echo_Fail_To_Rent()
+                return
         except AttributeError as e:
             print("un inited error", repr(e))
             flag = False
@@ -91,12 +95,19 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
         # refresh
         self.Query()
 
-    def Echo_Success_Not(self,flag):
+    def Echo_Success_Not(self, flag):
         msg = QMessageBox(self)
         if flag:
             msg.setText("success")
         else:
             msg.setText("Check your input!")
             msg.setIcon(QMessageBox.Critical)
+        msg.exec_()
+        pass
+
+    def Echo_Fail_To_Rent(self):
+        msg = QMessageBox(self)
+        msg.setText("you could no more rent, please return books first.")
+        msg.setIcon(QMessageBox.Critical)
         msg.exec_()
         pass

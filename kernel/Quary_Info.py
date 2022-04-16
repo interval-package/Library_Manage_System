@@ -127,6 +127,22 @@ def Query_UnReturned_Book(UserId):
     return res
 
 
+def Modify_Return(tar):
+    if len(tar) != 3:
+        return
+    UserId, BookId, RentDate = tar
+    with sql.connect(data_path) as conn:
+        conn.execute("""
+        update RentHistory
+        set ReturnDate = date('now')
+        where UserId = '{}'
+        and BookId = '{}'
+        and RentDay = '{}'
+        and ReturnDate is null
+        """.format(str(UserId), str(BookId), RentDate))
+    pass
+
+
 def Add_User(UserId, UserName, Role, Password):
     with sql.connect(data_path) as conn:
         conn.execute("""
@@ -134,6 +150,24 @@ def Add_User(UserId, UserName, Role, Password):
                 values
                 (%s,%s,%d,%s)
             """ % (quote(UserId), UserName, Role, quote(Password)))
+
+
+def RentHis_Certification(UserId):
+    res = None
+    with sql.connect(data_path) as conn:
+        try:
+            cursor = conn.execute("""
+                select * from UserUnReturn_Count
+                where UserId = '{}'
+                """.format(str(UserId)))
+        except sql.DatabaseError as e:
+            # 先放这个，不能没有显示
+            cursor = None
+            print("Query Fail", repr(e))
+            pass
+        if cursor is not None:
+            res = cursor.fetchall()[0]
+    return res[1] < res[2]
 
 
 def Add_RentHis(UserId, BookId):

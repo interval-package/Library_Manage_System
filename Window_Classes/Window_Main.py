@@ -13,6 +13,8 @@ from Window_Classes.UtilPages.RentingPage.RentingPageWrapper import RentingPage
 
 from Window_Classes.UtilPages.ReturnPage.ReturnPageWrapper import ReturnPage
 
+from Window_Classes.SuperPage.SuperPageWrapper import SuperPage
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -59,8 +61,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # 归还逻辑
         self.UserPage.ReturnButton.clicked.connect(lambda: self.switchPage(4))
-        self.ReturnPage.ReturnButton.clicked.connect(lambda: self.switchPage(1))
+        # self.ReturnPage.ReturnButton.clicked.connect(lambda: self.switchPage(1))
         self.ReturnPage.GoBackButton.clicked.connect(lambda: self.switchPage(1))
+
+        # 设置权限界面,5
+        self.SuperPage = SuperPage()
+        self.stackWidget.addWidget(self.SuperPage)
+        self.UserPage.SuperButton.clicked.connect(self.SuperUserAction)
 
         # 设置图标
         self.setIcon()
@@ -90,6 +97,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.RentingPage.setUser(User)
             self.switchPage(1)
             pass
+
+    def SuperUserAction(self):
+        try:
+            if self.UserPage.User.role != 0:
+                self.Echo_Fail_Authority()
+            else:
+                self.switchPage(5)
+        except Exception as e:
+            print(repr(e))
+        pass
+
+    def Echo_Fail_Authority(self):
+        msg = QMessageBox(self)
+        msg.setText("Echo_Fail_Authority")
+        msg.setIcon(QMessageBox.Critical)
+        msg.exec_()
+        pass
 
     # rent and return
 
