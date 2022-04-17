@@ -68,7 +68,6 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
         self.updateRentedBookInfoList()
 
     def Rent(self):
-        flag = True
         try:
             BookId = self.BooksView.selectionModel().selectedIndexes()[-1].data()
             UserId = self.User.id
@@ -79,17 +78,27 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
                 self.Echo_Fail_To_Rent()
                 return
         except AttributeError as e:
+            self.Echo_Empty_Input("un inited error" + repr(e))
             print("un inited error", repr(e))
-            flag = False
         except IndexError as e:
+            self.Echo_Empty_Input("select Wrong" + repr(e))
             print("select Wrong", repr(e))
-            flag = False
         except Exception as e:
+            self.Echo_Empty_Input("select Wrong" + repr(e))
             print(repr(e))
-            flag = False
-        self.Echo_Success_Not(flag)
         # refresh
         self.Query()
+
+    def Echo_Empty_Input(self, ms=None):
+        msg = QMessageBox(self)
+        msg.setWindowTitle("Error!")
+        if ms is not None:
+            msg.setText(str(ms))
+        else:
+            msg.setText("Wrong Input")
+        msg.setIcon(QMessageBox.Critical)
+        msg.exec_()
+        pass
 
     def Echo_Success_Not(self, flag):
         msg = QMessageBox(self)

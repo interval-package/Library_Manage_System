@@ -69,8 +69,7 @@ def Query_BookType():
     with sql.connect(data_path) as conn:
         try:
             cursor = conn.execute("""
-                select TypeName
-                from BookType
+                select * from BookType
                 """)
         except sql.DatabaseError as e:
             # 先放这个，不能没有显示
@@ -240,3 +239,38 @@ def FetchAllBookType():
         if cursor is not None:
             res = cursor.fetchall()
     return res
+
+
+def FetchAllRoleTypes():
+    res = None
+    with sql.connect(data_path) as conn:
+        try:
+            cursor = conn.execute("""
+            select * from UserRole
+            """)
+        except sql.DatabaseError as e:
+            # 先放这个，不能没有显示
+            cursor = None
+            print("Query Fail", repr(e))
+            pass
+        if cursor is not None:
+            res = cursor.fetchall()
+    return res
+
+
+def FetchAllUser():
+    res = None
+    with sql.connect(data_path) as conn:
+        try:
+            cursor = conn.execute("""
+            select * from User
+            """)
+        except sql.DatabaseError as e:
+            # 先放这个，不能没有显示
+            cursor = None
+            print("Query Fail", repr(e))
+            pass
+        if cursor is not None:
+            res = cursor.fetchall()
+    return res
+
