@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QMessageBox
 
 from Window_Classes.LoginPage.LoginPage import *

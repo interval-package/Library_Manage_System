@@ -34,14 +34,11 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
         self.User.updateRentHis()
         try:
             model = QStandardItemModel()
-            model.setHorizontalHeaderLabels(['id', 'name', 'type'])
+            model.setHorizontalHeaderLabels(['id', 'name', 'type', 'Rent Date', 'Return Date'])
             for his in self.User.RentHis:
                 row = []
                 for detail in his:
-                    if isinstance(detail, int):
-                        continue
-                    else:
-                        row.append(QStandardItem(detail))
+                    row.append(QStandardItem(detail))
                 model.appendRow(row)
             self.RentedBookView.setModel(model)
         except Exception as e:
@@ -68,7 +65,6 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
         except Exception as e:
             print(repr(e))
         pass
-
         self.updateRentedBookInfoList()
 
     def Rent(self):

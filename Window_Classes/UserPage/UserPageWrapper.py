@@ -42,14 +42,11 @@ class UserPage(QtWidgets.QWidget, Ui_Form):
     def updateRentedBookInfoList(self) -> None:
         try:
             model = QStandardItemModel()
-            model.setHorizontalHeaderLabels(['id', 'name', 'stock', 'price', 'type'])
+            model.setHorizontalHeaderLabels(['id', 'name', 'type', 'Rent Date', 'Return Date'])
             for his in self.User.RentHis:
                 row = []
                 for detail in his:
-                    if isinstance(detail, int):
-                        row.append(QStandardItem(str(detail)))
-                    else:
-                        row.append(QStandardItem(detail))
+                    row.append(QStandardItem(detail))
                 model.appendRow(row)
             self.RentedBookTable.setModel(model)
         except Exception as e:

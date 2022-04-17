@@ -91,10 +91,18 @@
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QTableView" name="RentedBookView"/>
+     <widget class="QTableView" name="RentedBookView">
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+     </widget>
     </item>
     <item row="3" column="0">
-     <widget class="QTableView" name="BooksView"/>
+     <widget class="QTableView" name="BooksView">
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

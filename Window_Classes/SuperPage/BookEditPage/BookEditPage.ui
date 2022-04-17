@@ -16,8 +16,8 @@
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>9</x>
-     <y>9</y>
+     <x>10</x>
+     <y>10</y>
      <width>781</width>
      <height>581</height>
     </rect>
@@ -35,14 +35,230 @@
     <property name="bottomMargin">
      <number>50</number>
     </property>
-    <item row="2" column="3">
-     <widget class="QPushButton" name="pushButton_2">
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_5">
       <property name="text">
-       <string>PushButton</string>
+       <string>Stock</string>
+      </property>
+      <property name="buddy">
+       <cstring>StockLine</cstring>
       </property>
      </widget>
     </item>
-    <item row="1" column="1" colspan="2">
+    <item row="11" column="2" colspan="2">
+     <widget class="QPushButton" name="GoBackButton">
+      <property name="text">
+       <string>Go Back</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QTableView" name="BookView"/>
+    </item>
+    <item row="11" column="4">
+     <widget class="QPushButton" name="AddTypeButton">
+      <property name="text">
+       <string>Add Type</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="BookNameLine"/>
+    </item>
+    <item row="2" column="1" rowspan="2">
+     <widget class="QLineEdit" name="BookIdLine"/>
+    </item>
+    <item row="4" column="3" colspan="2">
+     <widget class="QLineEdit" name="lineEdit_6"/>
+    </item>
+    <item row="2" column="0" rowspan="2">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Id</string>
+      </property>
+      <property name="buddy">
+       <cstring>BookIdLine</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2" rowspan="2">
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3" colspan="2">
+     <widget class="QComboBox" name="comboBox_2">
+      <item>
+       <property name="text">
+        <string>新建项目</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>新建项目</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>新建项目</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>新建项目</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>新建项目</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>新建项目</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="10" column="4">
+     <widget class="QPushButton" name="DeleteTypeButton">
+      <property name="text">
+       <string>DeleteTypeButton</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="2" colspan="2">
+     <widget class="QPushButton" name="RefreshButton">
+      <property name="text">
+       <string>Refresh</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="StockLine"/>
+    </item>
+    <item row="9" column="4">
+     <widget class="QPushButton" name="ChangeBookTypeButton">
+      <property name="text">
+       <string>ChangeBookTypeButton</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0" colspan="2">
+     <widget class="QPushButton" name="ChangeBookButton">
+      <property name="text">
+       <string>ChangeBookButton</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QComboBox" name="comboBox">
+      <item>
+       <property name="text">
+        <string>Act1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>新建项目</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>新建项目</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>新建项目</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>新建项目</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>新建项目</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="10" column="0" colspan="2">
+     <widget class="QPushButton" name="DeleteButton">
+      <property name="text">
+       <string>DeleteButton</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="3" colspan="2">
+     <widget class="QLineEdit" name="lineEdit_7"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Name</string>
+      </property>
+      <property name="buddy">
+       <cstring>BookNameLine</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="3" colspan="2">
+     <widget class="QLineEdit" name="lineEdit_8"/>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Noting</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QLabel" name="label_9">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="PriceLine"/>
+    </item>
+    <item row="10" column="2" colspan="2">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>Price</string>
+      </property>
+      <property name="buddy">
+       <cstring>PriceLine</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="0" colspan="2">
+     <widget class="QPushButton" name="AddBookButton">
+      <property name="text">
+       <string>Add Book</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
      <spacer name="verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -55,51 +271,31 @@
       </property>
      </spacer>
     </item>
-    <item row="1" column="0">
-     <widget class="QTableView" name="tableView_2"/>
+    <item row="2" column="3" rowspan="2" colspan="2">
+     <widget class="QLineEdit" name="lineEdit_5"/>
     </item>
-    <item row="1" column="3">
-     <widget class="QTableView" name="tableView"/>
-    </item>
-    <item row="0" column="0">
-     <widget class="QComboBox" name="comboBox"/>
-    </item>
-    <item row="2" column="0">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1" colspan="2">
-     <widget class="QLabel" name="label">
+    <item row="6" column="2">
+     <widget class="QLabel" name="label_10">
       <property name="text">
        <string>TextLabel</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
-     <widget class="QPushButton" name="GoBackButton">
+    <item row="1" column="3" colspan="2">
+     <widget class="QTableView" name="BookTypeView"/>
+    </item>
+    <item row="7" column="1" rowspan="2">
+     <widget class="QComboBox" name="BookTypeComboBox"/>
+    </item>
+    <item row="7" column="0" rowspan="2">
+     <widget class="QLabel" name="label_11">
       <property name="text">
-       <string>Go Back</string>
+       <string>Type</string>
+      </property>
+      <property name="buddy">
+       <cstring>BookTypeComboBox</cstring>
       </property>
      </widget>
-    </item>
-    <item row="0" column="1" colspan="2">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QComboBox" name="comboBox_2"/>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLineEdit" name="lineEdit"/>
-    </item>
-    <item row="3" column="3">
-     <widget class="QLineEdit" name="lineEdit_2"/>
     </item>
    </layout>
   </widget>

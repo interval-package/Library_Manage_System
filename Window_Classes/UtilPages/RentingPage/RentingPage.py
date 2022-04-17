@@ -49,9 +49,11 @@ class Ui_RentingPage(object):
         self.GoBackButton.setObjectName("GoBackButton")
         self.gridLayout.addWidget(self.GoBackButton, 6, 0, 1, 2)
         self.RentedBookView = QtWidgets.QTableView(self.gridLayoutWidget)
+        self.RentedBookView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.RentedBookView.setObjectName("RentedBookView")
         self.gridLayout.addWidget(self.RentedBookView, 3, 1, 1, 1)
         self.BooksView = QtWidgets.QTableView(self.gridLayoutWidget)
+        self.BooksView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.BooksView.setObjectName("BooksView")
         self.gridLayout.addWidget(self.BooksView, 3, 0, 1, 1)
 

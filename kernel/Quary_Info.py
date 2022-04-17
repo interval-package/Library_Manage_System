@@ -8,7 +8,7 @@ def Query_UserRentingHis(user_id):
     with sql.connect(data_path) as conn:
         try:
             cursor = conn.execute("""
-                    select Book.BookId, Book.BookName, Book.Stock, Book.Price, BookType.TypeName
+                    select Book.BookId, Book.BookName, BookType.TypeName, RentHistory.RentDay, RentHistory.ReturnDate
                     from User, Book, RentHistory, BookType
                     where User.UserId = %s and BookType.TypeId = Book.Type
                     and User.UserId = RentHistory.UserId and Book.BookId = RentHistory.BookId
@@ -70,6 +70,23 @@ def Query_BookType():
         try:
             cursor = conn.execute("""
                 select TypeName
+                from BookType
+                """)
+        except sql.DatabaseError as e:
+            # 先放这个，不能没有显示
+            cursor = None
+            print(repr(e))
+            pass
+        if cursor is not None:
+            res = cursor.fetchall()
+    return res
+
+
+def Query_BookType_Id():
+    with sql.connect(data_path) as conn:
+        try:
+            cursor = conn.execute("""
+                select TypeId
                 from BookType
                 """)
         except sql.DatabaseError as e:
@@ -178,3 +195,48 @@ def Add_RentHis(UserId, BookId):
             ({0},{1},date('now'),null)
             """.format(quote(UserId), quote(BookId)))
     pass
+
+
+def Add_Book(BookId, BookName, stock, price, BookType):
+    with sql.connect(data_path) as conn:
+        conn.execute("""
+        insert into Book
+        values(
+        '{}', '{}', {}, {}, '{}'
+        )
+        """.format(str(BookId), str(BookName), stock, price, str(BookType)))
+    pass
+
+
+def FetchAllBooks():
+    res = None
+    with sql.connect(data_path) as conn:
+        try:
+            cursor = conn.execute("""
+            select * from Book
+            """)
+        except sql.DatabaseError as e:
+            # 先放这个，不能没有显示
+            cursor = None
+            print("Query Fail", repr(e))
+            pass
+        if cursor is not None:
+            res = cursor.fetchall()
+    return res
+
+
+def FetchAllBookType():
+    res = None
+    with sql.connect(data_path) as conn:
+        try:
+            cursor = conn.execute("""
+            select * from BookType
+            """)
+        except sql.DatabaseError as e:
+            # 先放这个，不能没有显示
+            cursor = None
+            print("Query Fail", repr(e))
+            pass
+        if cursor is not None:
+            res = cursor.fetchall()
+    return res
