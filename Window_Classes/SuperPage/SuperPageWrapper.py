@@ -2,6 +2,8 @@ from PyQt5.QtWidgets import QStackedWidget
 
 from Window_Classes.SuperPage.SuperPage import *
 
+from Window_Classes.SuperPage.CheckInfoPage.CheckInfoPageWrapper import CheckInfoPage
+
 from Window_Classes.SuperPage.SuperOptionsPage.SuperOptionsPageWrapper import *
 
 from Window_Classes.SuperPage.UserEditPage.UserEditPageWrapper import *
@@ -23,6 +25,7 @@ class SuperPage(QtWidgets.QWidget, Ui_SuperPage):
         self.stackWidget.addWidget(self.SuperOptionsPage)
         self.SuperOptionsPage.UserEditButton.clicked.connect(lambda: self.switchPage(1))
         self.SuperOptionsPage.BookEditButton.clicked.connect(lambda: self.switchPage(2))
+        self.SuperOptionsPage.CheckInfoButton.clicked.connect(lambda: self.switchPage(3))
 
         # 设置管理用户界面，1
         self.UserEditPage = UserEditPage()
@@ -33,6 +36,10 @@ class SuperPage(QtWidgets.QWidget, Ui_SuperPage):
         self.BookEditPage = BookEditPage()
         self.stackWidget.addWidget(self.BookEditPage)
         self.BookEditPage.GoBackButton.clicked.connect(lambda: self.switchPage(0))
+
+        # 设置导出数据界面，3
+        self.CheckInfoPage = CheckInfoPage()
+        self.stackWidget.addWidget(self.CheckInfoPage)
 
         # 将页面置放于窗体中间
         # self.setCentralWidget(self.stackWidget)

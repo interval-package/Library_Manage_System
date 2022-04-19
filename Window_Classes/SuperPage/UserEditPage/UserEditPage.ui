@@ -35,7 +35,87 @@
     <property name="bottomMargin">
      <number>50</number>
     </property>
-    <item row="10" column="3" colspan="2">
+    <item row="0" column="4">
+     <widget class="QComboBox" name="RoleOfTypeCombo"/>
+    </item>
+    <item row="15" column="2">
+     <widget class="QPushButton" name="GoBackButton">
+      <property name="text">
+       <string>Go Back</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" rowspan="2">
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>PassWord</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0" colspan="2">
+     <widget class="QPushButton" name="pushButton_7">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="4">
+     <widget class="QSpinBox" name="BookNumSpinBox"/>
+    </item>
+    <item row="14" column="0" colspan="2">
+     <widget class="QPushButton" name="DeleteUserButton">
+      <property name="text">
+       <string>Delete User</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>User Name</string>
+      </property>
+      <property name="buddy">
+       <cstring>UserNameLine</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="3" colspan="2">
+     <widget class="QPushButton" name="CommitButton">
+      <property name="text">
+       <string>Commit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Role Type</string>
+      </property>
+      <property name="buddy">
+       <cstring>RoleOfTypeCombo</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="UserIdLine"/>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="UserNameLine"/>
+    </item>
+    <item row="14" column="2">
+     <widget class="QPushButton" name="RefreshButton">
+      <property name="text">
+       <string>Refresh</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QComboBox" name="RoleOfUserCombo"/>
+    </item>
+    <item row="2" column="1" rowspan="2">
+     <widget class="QLineEdit" name="PassWordLine"/>
+    </item>
+    <item row="12" column="3" colspan="2">
      <widget class="QLabel" name="label_3">
       <property name="text">
        <string>Super Command place!</string>
@@ -45,16 +125,43 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="4">
-     <widget class="QSpinBox" name="BookNumSpinBox"/>
+    <item row="0" column="2" rowspan="14">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
     </item>
-    <item row="0" column="3">
-     <widget class="QLabel" name="label_2">
+    <item row="5" column="0" colspan="2">
+     <widget class="QPushButton" name="AddUserButton">
+      <property name="text">
+       <string>Add User</string>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0" rowspan="4" colspan="2">
+     <widget class="QTableView" name="UserView"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_9">
       <property name="text">
        <string>Role Type</string>
       </property>
       <property name="buddy">
-       <cstring>RoleOfTypeCombo</cstring>
+       <cstring>RoleOfUserCombo</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="15" column="0" colspan="2">
+     <widget class="QPushButton" name="ChangeUserButton">
+      <property name="text">
+       <string>Change User Info</string>
       </property>
      </widget>
     </item>
@@ -68,41 +175,8 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
-     <widget class="QComboBox" name="RoleOfUserCombo"/>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>User Name</string>
-      </property>
-      <property name="buddy">
-       <cstring>UserNameLine</cstring>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="UserNameLine"/>
-    </item>
-    <item row="12" column="3" colspan="2">
-     <widget class="QPushButton" name="CommitButton">
-      <property name="text">
-       <string>Commit</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="3" rowspan="5" colspan="2">
-     <widget class="QTableView" name="RoleView"/>
-    </item>
-    <item row="13" column="0" colspan="2">
-     <widget class="QPushButton" name="ChangeUserButton">
-      <property name="text">
-       <string>Change User Info</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="UserIdLine"/>
+    <item row="13" column="3" colspan="2">
+     <widget class="QTextEdit" name="SuperCommandEdit"/>
     </item>
     <item row="4" column="3" colspan="2">
      <widget class="QPushButton" name="pushButton_5">
@@ -111,86 +185,8 @@
       </property>
      </widget>
     </item>
-    <item row="12" column="0" colspan="2">
-     <widget class="QPushButton" name="DeleteUserButton">
-      <property name="text">
-       <string>Delete User</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="label_9">
-      <property name="text">
-       <string>Role Type</string>
-      </property>
-      <property name="buddy">
-       <cstring>RoleOfUserCombo</cstring>
-      </property>
-     </widget>
-    </item>
-    <item row="11" column="3" colspan="2">
-     <widget class="QTextEdit" name="SuperCommandEdit"/>
-    </item>
-    <item row="3" column="3">
-     <widget class="QLabel" name="label_6">
-      <property name="text">
-       <string>Book nums</string>
-      </property>
-      <property name="buddy">
-       <cstring>BookNumSpinBox</cstring>
-      </property>
-     </widget>
-    </item>
-    <item row="12" column="2">
-     <widget class="QPushButton" name="RefreshButton">
-      <property name="text">
-       <string>Refresh</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="0" colspan="2">
-     <widget class="QPushButton" name="AddUserButton">
-      <property name="text">
-       <string>Add User</string>
-      </property>
-     </widget>
-    </item>
-    <item row="13" column="2">
-     <widget class="QPushButton" name="GoBackButton">
-      <property name="text">
-       <string>Go Back</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="0" rowspan="4" colspan="2">
-     <widget class="QTableView" name="UserView"/>
-    </item>
-    <item row="7" column="0" colspan="2">
-     <widget class="QPushButton" name="pushButton_7">
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="13" column="3" colspan="2">
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="4">
-     <widget class="QComboBox" name="RoleOfTypeCombo"/>
-    </item>
-    <item row="2" column="1" rowspan="2">
-     <widget class="QLineEdit" name="PassWordLine"/>
-    </item>
-    <item row="2" column="0" rowspan="2">
-     <widget class="QLabel" name="label_7">
-      <property name="text">
-       <string>PassWord</string>
-      </property>
-     </widget>
+    <item row="5" column="3" rowspan="7" colspan="2">
+     <widget class="QTableView" name="RoleView"/>
     </item>
     <item row="1" column="3" rowspan="2">
      <widget class="QLabel" name="label_5">
@@ -205,18 +201,29 @@
     <item row="1" column="4" rowspan="2">
      <widget class="QSpinBox" name="DurarionSpinBox"/>
     </item>
-    <item row="0" column="2" rowspan="12">
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
+    <item row="15" column="3" colspan="2">
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="text">
+       <string>Output</string>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
+     </widget>
+    </item>
+    <item row="3" column="3">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>Book nums</string>
       </property>
-     </spacer>
+      <property name="buddy">
+       <cstring>BookNumSpinBox</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0" rowspan="3" colspan="2">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>Output User data to excel</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
