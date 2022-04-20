@@ -2,9 +2,12 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from DataLoader import DataBaseAct, sql
 from Window_Classes.Window_Main import MainWindow
+from kernel.Quary_Info import RentCertification
 
+from kernel.FetchInfoAction import UserReaction_GetDir
 
 if __name__ == '__main__':
+
     # 连接数据库，还是不要那么跳进行with操作了
     print(DataBaseAct.data_path)
     # conn = sql.connect(DataBaseAct.data_path)

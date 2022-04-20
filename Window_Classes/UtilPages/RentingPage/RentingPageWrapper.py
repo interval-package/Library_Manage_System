@@ -6,6 +6,8 @@ from Window_Classes.UtilPages.RentingPage.RentingPage import Ui_RentingPage
 from PyQt5 import QtWidgets
 from kernel.Quary_Info import Query_BookType, Query_Book, Add_RentHis, RentHis_Certification
 
+from kernel.ExceptionClasses import RentRefuse
+
 
 class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
     def __init__(self):
@@ -71,7 +73,7 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
             BookId = self.BooksView.selectionModel().selectedIndexes()[-1].data()
             UserId = self.User.id
             if RentHis_Certification(UserId):
-                print(UserId, BookId)
+                # print(UserId, BookId)
                 Add_RentHis(UserId, BookId)
             else:
                 self.Echo_Fail_To_Rent()
@@ -79,6 +81,8 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
         except AttributeError as e:
             self.Echo_Empty_Input("un inited error" + repr(e))
             print("un inited error", repr(e))
+        except RentRefuse as e:
+            self.Echo_Empty_Input(repr(e)+" you have rent too many books")
         except IndexError as e:
             self.Echo_Empty_Input("select Wrong" + repr(e))
             print("select Wrong", repr(e))

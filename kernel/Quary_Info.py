@@ -1,6 +1,8 @@
 import sys
 import warnings
 
+from kernel.ExceptionClasses import *
+
 from DataLoader import DataBaseAct, sql, data_path, quote
 
 
@@ -186,7 +188,24 @@ def RentHis_Certification(UserId):
     return res[1] < res[2]
 
 
+def RentCertification(UserId)->bool:
+    with sql.connect(data_path) as conn:
+        cursor = conn.execute("""
+            select * from UserUnReturn_Count
+            where UserId = '{}'
+        """.format(str(UserId)))
+        tar = cursor.fetchall()
+    if len(tar) == 0:
+        return True
+    else:
+        if tar[0][1] >= tar[0][2]:
+            return False
+    return True
+
+
 def Add_RentHis(UserId, BookId):
+    if ~RentCertification(UserId):
+        raise RentRefuse()
     with sql.connect(data_path) as conn:
         conn.execute("""
             insert into RentHistory
@@ -273,4 +292,3 @@ def FetchAllUser():
         if cursor is not None:
             res = cursor.fetchall()
     return res
-
