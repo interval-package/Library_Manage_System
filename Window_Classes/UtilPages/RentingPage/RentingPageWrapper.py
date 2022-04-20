@@ -27,8 +27,7 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
 
     def SetBookType(self):
         for his in Query_BookType():
-            for i in his:
-                self.BookTypeCombo.addItem(i)
+            self.BookTypeCombo.addItem(his[1])
 
     def updateRentedBookInfoList(self) -> None:
         self.User.updateRentHis()

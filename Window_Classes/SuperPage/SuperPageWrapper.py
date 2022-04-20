@@ -40,6 +40,7 @@ class SuperPage(QtWidgets.QWidget, Ui_SuperPage):
         # 设置导出数据界面，3
         self.CheckInfoPage = CheckInfoPage()
         self.stackWidget.addWidget(self.CheckInfoPage)
+        self.CheckInfoPage.GoBackButton.clicked.connect(lambda: self.switchPage(0))
 
         # 将页面置放于窗体中间
         # self.setCentralWidget(self.stackWidget)

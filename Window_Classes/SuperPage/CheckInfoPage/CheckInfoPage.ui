@@ -35,74 +35,31 @@
     <property name="bottomMargin">
      <number>50</number>
     </property>
-    <item row="4" column="1" colspan="3">
-     <widget class="QLineEdit" name="lineEdit_7"/>
-    </item>
-    <item row="4" column="4">
-     <widget class="QLabel" name="label_6">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-      <property name="buddy">
-       <cstring>lineEdit_5</cstring>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="5" colspan="3">
-     <widget class="QComboBox" name="comboBox_2"/>
-    </item>
-    <item row="1" column="0" colspan="8">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="5" column="4">
-     <widget class="QLabel" name="label_7">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-      <property name="buddy">
-       <cstring>lineEdit_6</cstring>
-      </property>
+     <widget class="QComboBox" name="comboBox_2">
+      <item>
+       <property name="text">
+        <string>Check User Renting History</string>
+       </property>
+      </item>
      </widget>
     </item>
-    <item row="2" column="5" colspan="3">
-     <widget class="QLineEdit" name="lineEdit"/>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_10">
+      <property name="text">
+       <string>Book Id</string>
+      </property>
+     </widget>
     </item>
     <item row="4" column="0">
      <widget class="QLabel" name="label_11">
       <property name="text">
-       <string>TextLabel</string>
+       <string>Rent Date</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="4">
-     <widget class="QLabel" name="label_5">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-      <property name="buddy">
-       <cstring>lineEdit_3</cstring>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1" colspan="3">
-     <widget class="QComboBox" name="comboBox"/>
-    </item>
-    <item row="10" column="4" colspan="2">
-     <widget class="QPushButton" name="GoBackButton">
-      <property name="text">
-       <string>Go Back</string>
-      </property>
-     </widget>
+    <item row="4" column="5" colspan="3">
+     <widget class="QLineEdit" name="lineEdit_5"/>
     </item>
     <item row="8" column="0" colspan="8">
      <spacer name="horizontalSpacer_2">
@@ -117,64 +74,19 @@
       </property>
      </spacer>
     </item>
-    <item row="3" column="5" colspan="3">
-     <widget class="QLineEdit" name="lineEdit_3"/>
-    </item>
-    <item row="5" column="5" colspan="3">
-     <widget class="QLineEdit" name="lineEdit_6"/>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
+    <item row="10" column="6" colspan="2">
+     <widget class="QPushButton" name="pushButton_3">
       <property name="text">
-       <string>TextLabel</string>
-      </property>
-      <property name="buddy">
-       <cstring>comboBox</cstring>
+       <string>Query</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="1" colspan="3">
-     <widget class="QLineEdit" name="lineEdit_4"/>
-    </item>
-    <item row="10" column="2" colspan="2">
-     <widget class="QPushButton" name="pushButton">
+    <item row="10" column="0" colspan="2">
+     <widget class="QPushButton" name="pushButton_2">
       <property name="text">
-       <string>PushButton</string>
+       <string>Update</string>
       </property>
      </widget>
-    </item>
-    <item row="2" column="1" colspan="3">
-     <widget class="QLineEdit" name="lineEdit_2"/>
-    </item>
-    <item row="0" column="4">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-      <property name="buddy">
-       <cstring>comboBox_2</cstring>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="4" colspan="4">
-     <widget class="QTableView" name="tableView_2"/>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_10">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="label_12">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="5" colspan="3">
-     <widget class="QLineEdit" name="lineEdit_5"/>
     </item>
     <item row="6" column="4" colspan="4">
      <widget class="QLabel" name="label_9">
@@ -182,25 +94,154 @@
        <string>Users</string>
       </property>
       <property name="buddy">
-       <cstring>tableView_2</cstring>
+       <cstring>UserView</cstring>
       </property>
      </widget>
     </item>
-    <item row="10" column="0" colspan="2">
-     <widget class="QPushButton" name="pushButton_2">
+    <item row="9" column="6" colspan="2">
+     <widget class="QLineEdit" name="lineEdit_9"/>
+    </item>
+    <item row="10" column="4" colspan="2">
+     <widget class="QPushButton" name="GoBackButton">
       <property name="text">
-       <string>PushButton</string>
+       <string>Go Back</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_3">
+    <item row="5" column="1" colspan="3">
+     <widget class="QLineEdit" name="lineEdit_8"/>
+    </item>
+    <item row="10" column="2" colspan="2">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>Refresh</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="5" colspan="3">
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
+    <item row="2" column="1" colspan="3">
+     <widget class="QLineEdit" name="lineEdit_2"/>
+    </item>
+    <item row="9" column="0" colspan="3">
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="text">
+       <string>Query</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="4">
+     <widget class="QLabel" name="label_7">
       <property name="text">
        <string>TextLabel</string>
       </property>
       <property name="buddy">
+       <cstring>lineEdit_6</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="5" colspan="3">
+     <widget class="QLineEdit" name="lineEdit_6"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Price</string>
+      </property>
+      <property name="buddy">
        <cstring>lineEdit_2</cstring>
       </property>
+     </widget>
+    </item>
+    <item row="3" column="1" colspan="3">
+     <widget class="QLineEdit" name="lineEdit_4"/>
+    </item>
+    <item row="4" column="4">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEdit_5</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="8">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="3" column="5" colspan="3">
+     <widget class="QLineEdit" name="lineEdit_3"/>
+    </item>
+    <item row="7" column="0" colspan="4">
+     <widget class="QTableView" name="BookView"/>
+    </item>
+    <item row="2" column="4">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>UserId</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEdit</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="3">
+     <widget class="QToolButton" name="toolButton">
+      <property name="text">
+       <string>...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_12">
+      <property name="text">
+       <string>Other Info</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="4">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>UserName</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEdit_3</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Check Type Of Books</string>
+      </property>
+      <property name="buddy">
+       <cstring>BookCombo</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" colspan="3">
+     <widget class="QComboBox" name="BookCombo">
+      <item>
+       <property name="text">
+        <string>Basic Book Info</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>UnReturned Book Info</string>
+       </property>
+      </item>
      </widget>
     </item>
     <item row="6" column="0" colspan="4">
@@ -209,47 +250,41 @@
        <string>Books</string>
       </property>
       <property name="buddy">
-       <cstring>tableView</cstring>
+       <cstring>BookView</cstring>
       </property>
      </widget>
     </item>
-    <item row="7" column="0" colspan="4">
-     <widget class="QTableView" name="tableView"/>
+    <item row="7" column="4" colspan="4">
+     <widget class="QTableView" name="UserView"/>
     </item>
-    <item row="10" column="6" colspan="2">
-     <widget class="QPushButton" name="pushButton_3">
+    <item row="0" column="4">
+     <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1" colspan="3">
-     <widget class="QLineEdit" name="lineEdit_8"/>
-    </item>
-    <item row="2" column="4">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>TextLabel</string>
+       <string>Check Type Of Users</string>
       </property>
       <property name="buddy">
-       <cstring>lineEdit</cstring>
+       <cstring>comboBox_2</cstring>
       </property>
      </widget>
-    </item>
-    <item row="9" column="0" colspan="4">
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="6" colspan="2">
-     <widget class="QLineEdit" name="lineEdit_9"/>
     </item>
     <item row="9" column="4" colspan="2">
+     <widget class="QCommandLinkButton" name="commandLinkButton">
+      <property name="text">
+       <string>More Detail</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2" colspan="2">
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="text">
+       <string>Chose Date</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
      <widget class="QLabel" name="label_13">
       <property name="text">
-       <string>TextLabel</string>
+       <string>No Date</string>
       </property>
      </widget>
     </item>
