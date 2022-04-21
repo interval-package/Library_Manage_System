@@ -1,12 +1,11 @@
-from PyQt5.QtCore import QStringListModel
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QHeaderView, QMessageBox
 
 from Window_Classes.UtilPages.RentingPage.RentingPage import Ui_RentingPage
 from PyQt5 import QtWidgets
-from kernel.Quary_Info import Query_BookType, Query_Book, Add_RentHis, RentHis_Certification
+from kernel.QueryInfoSite.QueryInfo import Query_BookType, Query_Book, Add_RentHis
 
-from kernel.ExceptionClasses import RentRefuse
+from kernel.QueryInfoSite.ExceptionClasses_Query import RentRefuse
 
 
 class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
@@ -72,12 +71,7 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
         try:
             BookId = self.BooksView.selectionModel().selectedIndexes()[-1].data()
             UserId = self.User.id
-            if RentHis_Certification(UserId):
-                # print(UserId, BookId)
-                Add_RentHis(UserId, BookId)
-            else:
-                self.Echo_Fail_To_Rent()
-                return
+            Add_RentHis(UserId, BookId)
         except AttributeError as e:
             self.Echo_Empty_Input("un inited error" + repr(e))
             print("un inited error", repr(e))
@@ -87,7 +81,7 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
             self.Echo_Empty_Input("select Wrong" + repr(e))
             print("select Wrong", repr(e))
         except Exception as e:
-            self.Echo_Empty_Input("select Wrong" + repr(e))
+            self.Echo_Empty_Input("unknown " + repr(e))
             print(repr(e))
         # refresh
         self.Query()

@@ -6,6 +6,6 @@ class DefinedQueryException(Exception):
 
 
 class RentRefuse(DefinedQueryException):
-    def __init__(self, msg=None):
+    def __init__(self, msg=''):
         super(RentRefuse, self).__init__("Rent Refused"+msg)
         pass

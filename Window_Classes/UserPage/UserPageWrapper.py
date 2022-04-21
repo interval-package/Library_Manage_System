@@ -2,7 +2,7 @@ from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 
 from Window_Classes.UserPage.UserPage import *
 
-from kernel.Quary_Info import Query_UserRank, Query_BookRank
+from kernel.QueryInfoSite.QueryInfo import Query_UserRank, Query_BookRank
 
 
 class UserPage(QtWidgets.QWidget, Ui_Form):

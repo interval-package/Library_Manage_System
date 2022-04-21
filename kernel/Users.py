@@ -1,8 +1,5 @@
-import abc
-
-
 # 这个是所有用户基类
-from kernel.Quary_Info import Query_UserRentingHis
+from kernel.QueryInfoSite.QueryInfo import Query_UserRentingHis
 
 
 class BasicUser(object):

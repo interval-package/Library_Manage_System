@@ -1,10 +1,6 @@
-import sys
-from PyQt5.QtWidgets import QApplication
-from DataLoader import DataBaseAct, sql
-from Window_Classes.Window_Main import MainWindow
-from kernel.Quary_Info import RentCertification
 
-from kernel.FetchInfoAction import UserReaction_GetDir
+from init import *
+
 
 if __name__ == '__main__':
 

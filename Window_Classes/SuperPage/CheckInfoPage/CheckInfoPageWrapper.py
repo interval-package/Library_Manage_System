@@ -1,7 +1,7 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
 from Window_Classes.SuperPage.CheckInfoPage.CheckInfoPage import *
-from kernel.Quary_Info import FetchAllBooks
+from kernel.QueryInfoSite.QueryInfo import FetchAllBooks
 
 
 class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):

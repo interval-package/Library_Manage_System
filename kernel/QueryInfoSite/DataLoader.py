@@ -7,6 +7,7 @@ import warnings
 # 这里要做的就是把数据访问的工作给隐藏起来
 data_path = os.path.join(os.getcwd(), 'data', 'library_info_core.db')
 
+
 def quote(string):
     return "'{}'" .format(string)
 
@@ -14,15 +15,15 @@ def quote(string):
 class DataBaseAct(object):
     # ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 
-    data_path = os.path.join(os.getcwd(), 'data', 'library_info_core.db')
+    data_path = os.path.join(os.getcwd(), '../../data', 'library_info_core.db')
 
     def __init__(self, action: str):
-        self.data_path = os.path.join(os.getcwd(), 'data', 'database', 'library_info_core.db')
+        self.data_path = os.path.join(os.getcwd(), '../../data', 'database', 'library_info_core.db')
         pass
 
 
 class DataLoader(object):
-    data_path = os.path.join(os.getcwd(), 'data', 'library_info_core.db')
+    data_path = os.path.join(os.getcwd(), '../../data', 'library_info_core.db')
 
 
 class LoginUserDataLoader(DataLoader):
@@ -43,7 +44,7 @@ class LoginUserDataLoader(DataLoader):
 
 
 if __name__ == '__main__':
-    data_path = os.path.join(os.getcwd(), 'data', 'library_info_core.db')
+    data_path = os.path.join(os.getcwd(), '../../data', 'library_info_core.db')
     print(data_path)
 
     # sqlCommand = 'insert into book (BookId, BookName) values(?, ?)'

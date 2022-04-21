@@ -1,8 +1,9 @@
-from PyQt5.QtGui import QStandardItemModel, QStandardItem, QIcon
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QMessageBox
 
 from Window_Classes.SuperPage.BookEditPage.BookEditPage import *
-from kernel.Quary_Info import Add_Book, FetchAllBooks, FetchAllBookType, Query_BookType, Query_BookType_Id
+from kernel.QueryInfoSite.QueryInfo import Add_Book, FetchAllBooks, FetchAllBookType, Query_BookType
+from kernel.QueryInfoSite.QueryInfo_sqlite import Add_BookType
 
 
 class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage):
@@ -20,6 +21,8 @@ class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage):
 
         self.RefreshButton.clicked.connect(self.RefreshViews)
 
+        self.AddBookButton.clicked.connect(self.AddBookType)
+
         pass
 
     def RefreshViews(self):
@@ -32,6 +35,21 @@ class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage):
         self.StockLine.clear()
         self.PriceLine.clear()
 
+        self.BookIdLine.clear()
+        self.BookNameLine.clear()
+
+        pass
+
+    def AddBookType(self):
+        TypeId = self.TypeIdLine.text()
+        TypeName = self.TypeNameLine.text()
+        if TypeId != '' and TypeName != '':
+            try:
+                Add_BookType(TypeId, TypeName)
+                pass
+            except Exception as e:
+                self.Echo_Empty_Input(repr(e))
+            pass
         pass
 
     def ChangeBookAction(self):

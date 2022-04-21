@@ -1,8 +1,7 @@
-from PyQt5 import QtWidgets
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QHeaderView
 
-from kernel.Quary_Info import Query_UnReturned_Book, Modify_Return
+from kernel.QueryInfoSite.QueryInfo import Query_UnReturned_Book, Modify_Return
 
 from Window_Classes.UtilPages.ReturnPage.ReturnPage import *
 

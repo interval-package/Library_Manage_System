@@ -1,9 +1,6 @@
-import sys
-import warnings
-
-from kernel.ExceptionClasses import *
-
-from DataLoader import DataBaseAct, sql, data_path, quote
+from kernel.QueryInfoSite.DataLoader import sql, data_path, quote
+from kernel.QueryInfoSite.ExceptionClasses_Query import *
+import pandas as pd
 
 
 def Query_UserRentingHis(user_id):
@@ -161,34 +158,7 @@ def Modify_Return(tar):
     pass
 
 
-def Add_User(UserId, UserName, Role, Password):
-    with sql.connect(data_path) as conn:
-        conn.execute("""
-                insert into User
-                values
-                (%s,%s,%d,%s)
-            """ % (quote(UserId), UserName, Role, quote(Password)))
-
-
-def RentHis_Certification(UserId):
-    res = None
-    with sql.connect(data_path) as conn:
-        try:
-            cursor = conn.execute("""
-                select * from UserUnReturn_Count
-                where UserId = '{}'
-                """.format(str(UserId)))
-        except sql.DatabaseError as e:
-            # 先放这个，不能没有显示
-            cursor = None
-            print("Query Fail", repr(e))
-            pass
-        if cursor is not None:
-            res = cursor.fetchall()[0]
-    return res[1] < res[2]
-
-
-def RentCertification(UserId)->bool:
+def RentCertification(UserId) -> bool:
     with sql.connect(data_path) as conn:
         cursor = conn.execute("""
             select * from UserUnReturn_Count
@@ -204,14 +174,15 @@ def RentCertification(UserId)->bool:
 
 
 def Add_RentHis(UserId, BookId):
-    if ~RentCertification(UserId):
+    if RentCertification(UserId):
+        with sql.connect(data_path) as conn:
+            conn.execute("""
+                insert into RentHistory
+                values
+                ({0},{1},date('now'),null)
+                """.format(quote(UserId), quote(BookId)))
+    else:
         raise RentRefuse()
-    with sql.connect(data_path) as conn:
-        conn.execute("""
-            insert into RentHistory
-            values
-            ({0},{1},date('now'),null)
-            """.format(quote(UserId), quote(BookId)))
     pass
 
 
@@ -224,6 +195,26 @@ def Add_Book(BookId, BookName, stock, price, BookType):
         )
         """.format(str(BookId), str(BookName), stock, price, str(BookType)))
     pass
+
+
+def Add_BookType(Id, Name):
+    with sql.connect(data_path) as conn:
+        conn.execute("""
+        insert into BookType
+        values(
+        '{}', '{}'
+        )
+        """.format(str(Id), str(Name)))
+    pass
+
+
+def Add_User(UserId, UserName, Role, Password):
+    with sql.connect(data_path) as conn:
+        conn.execute("""
+                insert into User
+                values
+                (%s,%s,%d,%s)
+            """ % (quote(UserId), UserName, Role, quote(Password)))
 
 
 def FetchAllBooks():

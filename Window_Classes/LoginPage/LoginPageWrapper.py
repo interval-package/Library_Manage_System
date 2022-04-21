@@ -1,8 +1,7 @@
-from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QMessageBox
 
 from Window_Classes.LoginPage.LoginPage import *
-from DataLoader import sql, data_path, quote
+from kernel.QueryInfoSite.DataLoader import sql, data_path, quote
 from kernel.Users import UserGet
 
 
