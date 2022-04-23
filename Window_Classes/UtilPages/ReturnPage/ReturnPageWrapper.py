@@ -1,6 +1,7 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QHeaderView
 
+from Window_Classes.UtilPages.PayMoneyPage.PayMoneyPageWrapper import PayMoneyPage
 from kernel.QueryInfoSite.QueryInfo import Query_UnReturned_Book, Modify_Return
 
 from Window_Classes.UtilPages.ReturnPage.ReturnPage import *
@@ -54,7 +55,7 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage):
             tar = []
             for i in [0, 2, 4]:
                 tar.append(self.UnreturnedList.selectionModel().selectedRows(i)[0].data())
-            Modify_Return(tar)
+            PayMoneyPage(self, self.User, tar[1]).exec_()
             # print(self.UnreturnedList.item(index, 0).text())
         except Exception as e:
             print(repr(e))

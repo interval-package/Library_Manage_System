@@ -1,6 +1,7 @@
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 
 from Window_Classes.UserPage.UserPage import *
+from Window_Classes.UtilPages.PayMoneyPage.PayMoneyPageWrapper import PayMoneyPage
 
 from kernel.QueryInfoSite.QueryInfo import Query_UserRank, Query_BookRank
 from kernel.QueryInfoSite.QueryInfo_sqlite import FetchAllRoleTypes
@@ -20,6 +21,8 @@ class UserPage(QtWidgets.QWidget, Ui_Form):
 
         self.updateBookRankPage()
         self.updateUserRankPage()
+
+        self.PayButton.clicked.connect(self.CallPayPage)
 
     def SetUser(self, user):
         self.User = user
@@ -44,7 +47,7 @@ class UserPage(QtWidgets.QWidget, Ui_Form):
 
         self.NameLable.setText(self.User.name)
         self.IDlable.setText(self.User.id)
-        self.RoleLable.setText(self.RoleDict[self.User.role])
+        self.RoleLable.setText(self.RoleDict[int(self.User.role)])
 
         self.UserInfoDispList.setModel(model)
         pass
@@ -102,3 +105,10 @@ class UserPage(QtWidgets.QWidget, Ui_Form):
         except Exception as e:
             print(repr(e))
         pass
+
+    def CallPayPage(self):
+        try:
+            PayPage = PayMoneyPage(self, self.User)
+            PayPage.exec_()
+        except Exception as e:
+            print(repr(e))

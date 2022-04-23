@@ -142,6 +142,33 @@ def Query_UnReturned_Book(UserId):
     return res
 
 
+def Query_Price_Remain(UserId, BookId=None, RentDate=None):
+
+    req = """
+        select * from UnreturnPrice
+        where UserId = {}
+        """.format(str(UserId))
+
+    if BookId is not None:
+        req += " and BookId = {}".format(str(BookId))
+
+    if RentDate is not None:
+        req += " and RentDay = {}".format(str(RentDate))
+
+    res = None
+    with sql.connect(data_path) as conn:
+        try:
+            cursor = conn.execute(req)
+        except sql.DatabaseError as e:
+            # 先放这个，不能没有显示
+            cursor = None
+            print("Query Fail", repr(e))
+            pass
+        if cursor is not None:
+            res = cursor.fetchall()
+    return res
+
+
 def Modify_Return(tar):
     if len(tar) != 3:
         return
@@ -170,13 +197,17 @@ def RentCertification(UserId, BookId) -> bool:
         else:
             if tar[0][1] >= tar[0][2]:
                 raise RentRefuse()
+    with sql.connect(data_path) as conn:
         cursor = conn.execute("""
-            select Stock from Book
+            select * from BookRemain
             where BookId = '{}'
         """.format(str(BookId)))
-        bookRes = cursor.fetchall()
-        if int(bookRes[0]) <= 0:
-            raise RentRefuse()
+        tar = cursor.fetchall()
+        if len(tar) == 0:
+            pass
+        else:
+            if tar[0][1] <= 0:
+                raise RentRefuse()
     return True
 
 
@@ -248,7 +279,6 @@ def Update_BookInfo(pack):
                 """.format(pack['name'], pack['Stock'], pack['price'], pack['type id'], pack['id']))
     except Exception as e:
         raise RentRefuse(repr(e))
-    pass
     pass
 
 

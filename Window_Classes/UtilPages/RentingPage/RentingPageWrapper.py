@@ -7,6 +7,8 @@ from kernel.QueryInfoSite.QueryInfo import Query_BookType, Query_Book, Add_RentH
 
 from kernel.QueryInfoSite.ExceptionClasses_Query import RentRefuse
 
+from Window_Classes.UtilPages.PayMoneyPage.PayMoneyPageWrapper import PayMoneyPage
+
 
 class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
     def __init__(self):
@@ -76,7 +78,7 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage):
             self.Echo_Empty_Input("un inited error" + repr(e))
             print("un inited error", repr(e))
         except RentRefuse as e:
-            self.Echo_Empty_Input(repr(e)+" you have rent too many books")
+            self.Echo_Empty_Input(repr(e) + " you have rent too many books")
         except IndexError as e:
             self.Echo_Empty_Input("select Wrong" + repr(e))
             print("select Wrong", repr(e))

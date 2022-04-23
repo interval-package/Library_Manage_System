@@ -7,7 +7,7 @@ from Window_Classes.LoginPage.LoginPageWrapper import LoginPage
 
 from Window_Classes.UserPage.UserPageWrapper import UserPage
 
-from Window_Classes.UtilPages.SignUpPage.SignUpPageWrapper import SignUpPage
+from Window_Classes.SignUpPage.SignUpPageWrapper import SignUpPage
 
 from Window_Classes.UtilPages.RentingPage.RentingPageWrapper import RentingPage
 

@@ -87,11 +87,6 @@ class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):
     def Query_User(self):
         pass
 
-    def UserReaction_GetDir(self, Filepath=None):
-        directory = QtWidgets.QFileDialog. \
-            getExistingDirectory(None, "Choose the folder", "C:/")  # 起始路径
-        return directory
-
     UserHeader = ['UserName', 'UserId', 'times']
 
     def updateUserRankPage(self) -> None:

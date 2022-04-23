@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMessageBox
 
-from Window_Classes.UtilPages.SignUpPage.SignUpPage import *
+from Window_Classes.SignUpPage.SignUpPage import *
 
 from kernel.QueryInfoSite.QueryInfo import Add_User, sql
 
