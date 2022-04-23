@@ -143,7 +143,6 @@ def Query_UnReturned_Book(UserId):
 
 
 def Query_Price_Remain(UserId, BookId=None, RentDate=None):
-
     req = """
         select * from UnreturnPrice
         where UserId = {}
@@ -182,6 +181,7 @@ def Modify_Return(tar):
         and RentDay = '{}'
         and ReturnDate is null
         """.format(str(UserId), str(BookId), RentDate))
+    print("return success")
     pass
 
 
@@ -207,7 +207,7 @@ def RentCertification(UserId, BookId) -> bool:
             pass
         else:
             if tar[0][1] <= 0:
-                raise RentRefuse()
+                raise RentRefuse("no book remain")
     return True
 
 
@@ -262,6 +262,21 @@ def Update_UserInfo(pack):
                 Role = '{}'
                 where UserId = '{}' 
                 """.format(pack['name'], pack['password'], pack['role'], pack['id']))
+    except Exception as e:
+        raise RentRefuse(repr(e))
+    pass
+
+
+def Update_RentDate(UserId, BookId, RentDate):
+    try:
+        with sql.connect(data_path) as conn:
+            conn.execute("""
+            update UnreturnPrice
+            set RentDay = date('now')
+            where UserId = '{}'
+            and BookId = '{}'
+            and RentDay = '{}'
+            """.format(str(UserId), str(BookId), RentDate))
     except Exception as e:
         raise RentRefuse(repr(e))
     pass

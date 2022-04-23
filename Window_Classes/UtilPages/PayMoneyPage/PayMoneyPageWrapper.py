@@ -1,7 +1,8 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
 from Window_Classes.UtilPages.PayMoneyPage.PayMoneyPage import *
-from kernel.QueryInfoSite.QueryInfo_sqlite import Query_BookRank, Query_Price_Remain, Add_RentHis, Modify_Return
+from kernel.QueryInfoSite.QueryInfo_sqlite import Query_BookRank, Query_Price_Remain, Add_RentHis, Modify_Return, \
+    Update_RentDate
 
 
 class PayMoneyPage(Ui_PayMoneyPage, QtWidgets.QDialog):
@@ -57,6 +58,11 @@ class PayMoneyPage(Ui_PayMoneyPage, QtWidgets.QDialog):
 
     def Return(self):
         if self.BookId is not None:
+            print([self.user.id, self.BookId, self.RentDate])
             Modify_Return([self.user.id, self.BookId, self.RentDate])
+            self.done(1)
         else:
+            if self.Res is not None:
+                for i in self.Res:
+                    Update_RentDate(i[0], i[1], i[4])
             self.done(1)

@@ -55,7 +55,7 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage):
             tar = []
             for i in [0, 2, 4]:
                 tar.append(self.UnreturnedList.selectionModel().selectedRows(i)[0].data())
-            PayMoneyPage(self, self.User, tar[1]).exec_()
+            PayMoneyPage(self, self.User, tar[1],tar[2]).exec_()
             # print(self.UnreturnedList.item(index, 0).text())
         except Exception as e:
             print(repr(e))
