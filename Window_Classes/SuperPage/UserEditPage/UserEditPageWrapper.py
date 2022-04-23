@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 from Window_Classes.SuperPage.UserEditPage.UserEditPage import *
 from kernel.QueryInfoSite.QueryInfo import FetchAllRoleTypes, FetchAllUser, Add_User
-from kernel.QueryInfoSite.QueryInfo_sqlite import Update_UserIndo
+from kernel.QueryInfoSite.QueryInfo_sqlite import Update_UserInfo
 
 
 class UserEditPage(QtWidgets.QWidget, Ui_UserEditPage):
@@ -54,14 +54,15 @@ class UserEditPage(QtWidgets.QWidget, Ui_UserEditPage):
         pass
 
     def ChangeUserInfoAction(self):
-        rows = self.UserView.selectionModel().selectedRows()
-        model = self.UserView.model()
-        for row in rows:
-            r = row.data()
+        try:
             pack = dict()
-            for i, title in zip(range(0, 4), self.UserInfoHeader):
-                pack[title] = model.index(r, i).data()
-            Update_UserIndo(pack)
+            for i, title in zip(self.UserView.selectionModel().selectedIndexes(), self.UserInfoHeader):
+                pack[title] = i.data()
+            Update_UserInfo(pack)
+        except Exception as e:
+            self.Echo_Fail(repr(e))
+            return
+        self.Echo_Success()
         pass
 
     def AddUserAction(self):

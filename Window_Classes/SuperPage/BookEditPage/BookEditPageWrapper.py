@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 from Window_Classes.SuperPage.BookEditPage.BookEditPage import *
 from kernel.QueryInfoSite.QueryInfo import Add_Book, FetchAllBooks, FetchAllBookType, Query_BookType
-from kernel.QueryInfoSite.QueryInfo_sqlite import Add_BookType
+from kernel.QueryInfoSite.QueryInfo_sqlite import Add_BookType, Update_BookInfo
 
 
 class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage):
@@ -53,8 +53,15 @@ class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage):
         pass
 
     def ChangeBookAction(self):
-        for i in self.BookView.selectionModel().selectedIndexes():
-            print(i.data())
+        try:
+            pack = dict()
+            for i, title in zip(self.BookView.selectionModel().selectedIndexes(), self.BookHeader):
+                pack[title] = i.data()
+            Update_BookInfo(pack)
+        except Exception as e:
+            self.Echo_Fail(repr(e))
+            return
+        self.Echo_Success()
         pass
 
     def AddBookAction(self):
@@ -86,6 +93,13 @@ class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage):
         msg.exec_()
         pass
 
+    def Echo_Fail(self, ms):
+        msg = QMessageBox(self)
+        msg.setWindowTitle("Error!")
+        msg.setText(str(ms))
+        msg.setIcon(QMessageBox.Critical)
+        msg.exec_()
+
     def Echo_Success(self):
         msg = QMessageBox(self)
         msg.setWindowTitle("success")
@@ -97,12 +111,14 @@ class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage):
         self.BookTypeComboBox.clear()
         self.TypeDict = self.BindTypeDict()
         for his in Query_BookType():
-                self.BookTypeComboBox.addItem(his[0])
+            self.BookTypeComboBox.addItem(his[0])
+
+    BookHeader = ['id', 'name', 'stock', 'price', 'type id']
 
     def SetUpBookView(self):
         try:
             model = QStandardItemModel()
-            model.setHorizontalHeaderLabels(['id', 'name', 'stock', 'price', 'type id'])
+            model.setHorizontalHeaderLabels(self.BookHeader)
             for his in FetchAllBooks():
                 row = []
                 for detail in his:

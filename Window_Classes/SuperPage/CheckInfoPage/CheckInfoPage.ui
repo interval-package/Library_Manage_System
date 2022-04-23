@@ -150,7 +150,7 @@
      </widget>
     </item>
     <item row="0" column="5" colspan="4">
-     <widget class="QComboBox" name="comboBox_2">
+     <widget class="QComboBox" name="UserCombo">
       <item>
        <property name="text">
         <string>Check User Renting History</string>
@@ -170,7 +170,7 @@
        <string>Check Type Of Users</string>
       </property>
       <property name="buddy">
-       <cstring>comboBox_2</cstring>
+       <cstring>UserCombo</cstring>
       </property>
      </widget>
     </item>

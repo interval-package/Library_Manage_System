@@ -222,7 +222,7 @@ def Add_User(UserId, UserName, Role, Password):
             """ % (quote(UserId), UserName, Role, quote(Password)))
 
 
-def Update_UserIndo(pack):
+def Update_UserInfo(pack):
     try:
         with sql.connect(data_path) as conn:
             conn.execute("""
@@ -233,6 +233,22 @@ def Update_UserIndo(pack):
                 """.format(pack['name'], pack['password'], pack['role'], pack['id']))
     except Exception as e:
         raise RentRefuse(repr(e))
+    pass
+
+
+def Update_BookInfo(pack):
+    try:
+        with sql.connect(data_path) as conn:
+            conn.execute("""
+                update Book set BookName = '{}',
+                Stock = '{}',
+                Price = '{}',
+                Type = ''
+                where UserId = '{}' 
+                """.format(pack['name'], pack['Stock'], pack['price'], pack['type id'], pack['id']))
+    except Exception as e:
+        raise RentRefuse(repr(e))
+    pass
     pass
 
 

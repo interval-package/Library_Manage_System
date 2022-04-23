@@ -5,9 +5,20 @@ from kernel.SaveToExcel import *
 
 
 class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):
+
     def __init__(self):
         super(CheckInfoPage, self).__init__()
         self.setupUi(self)
+
+        self.BookComboDict = {
+            'Ranked Book': [Query_BookRank, self.updateBookRankPage],
+        }
+
+        self.UserComboDict = {
+            'Ranked User': [Query_UserRank, self.updateUserRankPage],
+        }
+
+        self.SetTypeListDict()
 
         self.QueryBookButton.clicked.connect(self.Query_Book)
         self.QueryUserButton.clicked.connect(self.Query_User)
@@ -17,18 +28,32 @@ class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):
 
         self.RefreshButton.clicked.connect(self.RefreshPageInfo)
 
+    def SetTypeListDict(self):
+        model = QStandardItemModel()
+        for key in self.BookComboDict.keys():
+            model.appendRow(QStandardItem(key))
+        self.BookCombo.setModel(model)
+
+        model = QStandardItemModel()
+        for key in self.UserComboDict.keys():
+            model.appendRow(QStandardItem(key))
+        self.UserCombo.setModel(model)
+
     def RefreshPageInfo(self):
         self.RefreshBookList()
         self.RefreshUserList()
-
         pass
 
     def RefreshUserList(self):
-        self.updateUserRankPage()
+        tar = self.UserCombo.currentText()
+        method = self.UserComboDict[tar][1]
+        method()
         pass
 
     def RefreshBookList(self):
-        self.updateBookRankPage()
+        tar = self.BookCombo.currentText()
+        method = self.BookComboDict[tar][1]
+        method()
         pass
 
     BookHeader = ['BookId', 'BookName', 'times', 'Stock', 'Price', 'TypeName']
@@ -89,12 +114,15 @@ class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):
         pass
 
     def SaveBookList(self):
+        tar = self.BookCombo.currentText()
         path = self.MessageOfGettingPath()
-        SaveToExcel(path, 'Book', Query_BookRank)
+        SaveToExcel(path, 'Book', self.BookComboDict[tar][0])
         pass
 
     def SaveUserList(self):
+        tar = self.UserCombo.currentText()
         path = self.MessageOfGettingPath()
+        SaveToExcel(path, 'Book', self.UserComboDict[tar][0])
         pass
 
     @staticmethod
