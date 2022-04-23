@@ -158,31 +158,36 @@ def Modify_Return(tar):
     pass
 
 
-def RentCertification(UserId) -> bool:
+def RentCertification(UserId, BookId) -> bool:
     with sql.connect(data_path) as conn:
         cursor = conn.execute("""
             select * from UserUnReturn_Count
             where UserId = '{}'
         """.format(str(UserId)))
         tar = cursor.fetchall()
-    if len(tar) == 0:
-        return True
-    else:
-        if tar[0][1] >= tar[0][2]:
-            return False
+        if len(tar) == 0:
+            pass
+        else:
+            if tar[0][1] >= tar[0][2]:
+                raise RentRefuse()
+        cursor = conn.execute("""
+            select Stock from Book
+            where BookId = '{}'
+        """.format(str(BookId)))
+        bookRes = cursor.fetchall()
+        if int(bookRes[0]) <= 0:
+            raise RentRefuse()
     return True
 
 
 def Add_RentHis(UserId, BookId):
-    if RentCertification(UserId):
-        with sql.connect(data_path) as conn:
-            conn.execute("""
-                insert into RentHistory
-                values
-                ({0},{1},date('now'),null)
-                """.format(quote(UserId), quote(BookId)))
-    else:
-        raise RentRefuse()
+    RentCertification(UserId, BookId)
+    with sql.connect(data_path) as conn:
+        conn.execute("""
+            insert into RentHistory
+            values
+            ({0},{1},date('now'),null)
+            """.format(quote(UserId), quote(BookId)))
     pass
 
 
@@ -215,6 +220,20 @@ def Add_User(UserId, UserName, Role, Password):
                 values
                 (%s,%s,%d,%s)
             """ % (quote(UserId), UserName, Role, quote(Password)))
+
+
+def Update_UserIndo(pack):
+    try:
+        with sql.connect(data_path) as conn:
+            conn.execute("""
+                update User set UserName = '{}',
+                Password = '{}',
+                Role = '{}'
+                where UserId = '{}' 
+                """.format(pack['name'], pack['password'], pack['role'], pack['id']))
+    except Exception as e:
+        raise RentRefuse(repr(e))
+    pass
 
 
 def FetchAllBooks():

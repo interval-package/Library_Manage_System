@@ -2,11 +2,30 @@ import pymssql as sql
 
 
 class SqlServer(object):
-    def __init__(self):
-        self.connect = sql.connect('(local)')
-        if self.connect:
-            print("valid!")
-            self.cur = self.connect.cursor()
-        else:
-            self.cur = None
+    db = "LibraryManageSystem"
+
+    def __init__(self, host="(local)"):
+        self.host = host
+        with sql.connect(host=host, database=self.db) as conn:
+            if ~conn:
+                raise ValueError("invalid host")
         pass
+
+    def CallBase(self):
+        conn = sql.connect(host=self.host, database=self.db)
+        if ~conn:
+            raise ValueError("invalid host")
+        return conn
+
+
+if __name__ == '__main__':
+    conn = sql.connect(host='(local)', database='LibraryManageSystem')
+    if conn:
+        print("valid")
+    else:
+        exit(-1)
+    cur = conn.cursor()
+    cur.execute("select * from UserInfo")
+    res = cur.fetchall()
+    print(res)
+    pass

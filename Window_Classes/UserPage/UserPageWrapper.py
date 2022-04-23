@@ -3,6 +3,7 @@ from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from Window_Classes.UserPage.UserPage import *
 
 from kernel.QueryInfoSite.QueryInfo import Query_UserRank, Query_BookRank
+from kernel.QueryInfoSite.QueryInfo_sqlite import FetchAllRoleTypes
 
 
 class UserPage(QtWidgets.QWidget, Ui_Form):
@@ -12,6 +13,10 @@ class UserPage(QtWidgets.QWidget, Ui_Form):
         self.User = None
         self.icon = QIcon()
         self.icon.addPixmap(QtGui.QPixmap("images/icon_music.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
+        self.RoleDict = dict()
+        for role in FetchAllRoleTypes():
+            self.RoleDict[role[0]] = role[1]
 
         self.updateBookRankPage()
         self.updateUserRankPage()
@@ -36,6 +41,11 @@ class UserPage(QtWidgets.QWidget, Ui_Form):
         # name_item = QStandardItem(self.icon, self.User.name)
         model.appendRow(QStandardItem(self.icon, self.User.name))
         model.appendRow(QStandardItem(self.icon, self.User.id))
+
+        self.NameLable.setText(self.User.name)
+        self.IDlable.setText(self.User.id)
+        self.RoleLable.setText(self.RoleDict[self.User.role])
+
         self.UserInfoDispList.setModel(model)
         pass
 
@@ -53,10 +63,12 @@ class UserPage(QtWidgets.QWidget, Ui_Form):
             print(repr(e))
         pass
 
+    BookHeader = ['BookId', 'BookName', 'times', 'Stock', 'Price', 'TypeName']
+
     def updateBookRankPage(self) -> None:
         try:
             model = QStandardItemModel()
-            model.setHorizontalHeaderLabels(['BookId', 'BookName', 'times', 'Stock', 'Price', 'TypeName'])
+            model.setHorizontalHeaderLabels(self.BookHeader)
             for his in Query_BookRank():
                 row = []
                 for detail in his:
@@ -70,10 +82,12 @@ class UserPage(QtWidgets.QWidget, Ui_Form):
             print(repr(e))
         pass
 
+    UserHeader = ['UserName', 'UserId', 'times']
+
     def updateUserRankPage(self) -> None:
         try:
             model = QStandardItemModel()
-            model.setHorizontalHeaderLabels(['UserName', 'UserId', 'times'])
+            model.setHorizontalHeaderLabels(self.UserHeader)
             for his in Query_UserRank():
                 row = []
                 for detail in his:

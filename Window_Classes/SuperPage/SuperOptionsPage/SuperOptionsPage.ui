@@ -35,17 +35,24 @@
     <property name="bottomMargin">
      <number>50</number>
     </property>
-    <item row="5" column="0">
-     <widget class="QPushButton" name="UserEditButton">
-      <property name="text">
-       <string>User Edit</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
+    <item row="2" column="1" rowspan="2">
      <widget class="QPushButton" name="CheckInfoButton">
       <property name="text">
        <string>Check info</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QPushButton" name="BookEditButton">
+      <property name="text">
+       <string>Book Edit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" rowspan="2">
+     <widget class="QPushButton" name="GoBackButton">
+      <property name="text">
+       <string>Go Back</string>
       </property>
      </widget>
     </item>
@@ -59,44 +66,10 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="0" colspan="2">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="ChangeParamBUtton">
-      <property name="text">
-       <string>Change Parameters</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QPushButton" name="BookEditButton">
-      <property name="text">
-       <string>Book Edit</string>
-      </property>
-     </widget>
-    </item>
     <item row="4" column="0">
-     <widget class="QPushButton" name="GoBackButton">
+     <widget class="QPushButton" name="UserEditButton">
       <property name="text">
-       <string>Go Back</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QPushButton" name="CalculateButton">
-      <property name="text">
-       <string>Calculate Info</string>
+       <string>User Edit</string>
       </property>
      </widget>
     </item>
