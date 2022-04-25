@@ -14,8 +14,6 @@ class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage):
 
         self.TypeDict = self.BindTypeDict()
 
-        print(self.TypeDict)
-
         self.ChangeBookButton.clicked.connect(self.ChangeBookAction)
         self.AddBookButton.clicked.connect(self.AddBookAction)
 
@@ -110,8 +108,8 @@ class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage):
     def SetBookType(self):
         self.BookTypeComboBox.clear()
         self.TypeDict = self.BindTypeDict()
-        for his in Query_BookType():
-            self.BookTypeComboBox.addItem(his[0])
+        for his in self.TypeDict.keys():
+            self.BookTypeComboBox.addItem(his)
 
     BookHeader = ['id', 'name', 'stock', 'price', 'type id']
 

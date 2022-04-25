@@ -145,6 +145,8 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage)
 
 ### 1.概览
 
+
+
 ### 2.详细介绍
 
 ## 3.数据库结构详解
@@ -155,6 +157,23 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage)
 
 ##### 1.Book
 
+```sql
+CREATE TABLE Book (
+    BookId   CHAR    PRIMARY KEY
+                     NOT NULL,
+    BookName CHAR,
+    Stock    INTEGER DEFAULT (0) 
+                     CHECK (Stock >= 0) 
+                     NOT NULL,
+    Price    INTEGER DEFAULT (0) 
+                     CHECK (Price > 0) 
+                     NOT NULL,
+    TypeId           REFERENCES BookType (TypeId) 
+);
+```
+
+
+
 | Name | Data Type | PK   | FK   | Unique | Check | Default |
 | ---- | --------- | ---- | ---- | ------ | ----- | ------- |
 |      |           |      |      |        |       |         |
@@ -162,6 +181,16 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage)
 |      |           |      |      |        |       |         |
 
 ##### 2.BookType
+
+```sql
+CREATE TABLE BookType (
+    TypeId   CHAR PRIMARY KEY
+                  NOT NULL,
+    TypeName CHAR
+);
+```
+
+
 
 | Name | Data Type | PK   | FK   | Unique | Check | Default |
 | ---- | --------- | ---- | ---- | ------ | ----- | ------- |
@@ -214,6 +243,60 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage)
 # 四、程序运行结果测试与分析
 
 ## 1.GUI展示
+
+### （1）普通用户流程展示
+
+#### 1.登录界面
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\LoginPage.png" style="zoom:25%;" />
+
+##### 1）登录成功
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\Login_Success.png" style="zoom:25%;" />
+
+##### 2）日历界面
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\LoginPage_2.png" style="zoom:25%;" />
+
+#### 2.注册界面
+
+#### 3.用户界面
+
+##### 1）基本用户信息界面
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\UserPage.png" style="zoom:25%;" />
+
+##### 2）用户排行榜
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\UserRank.png" style="zoom:25%;" />
+
+##### 3）图书排行榜
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\UserRank.png" style="zoom:25%;" />
+
+#### 4.借阅界面
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\RentPage.png" style="zoom:25%;" />
+
+#### 5.归还界面
+
+##### 1）初始
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\ReturnPage.png" style="zoom:25%;" />
+
+##### 2）归还操作
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\ReturnAction.png" style="zoom:25%;" />
+
+#### 6.续借界面
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\PayMoney.png" style="zoom:25%;" />
+
+#### 7.尝试访问管理权限
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\FailOfSuper.png" style="zoom:25%;" />
+
+### （2）超级用户流程展示
 
 ## 2.数据输出展示
 

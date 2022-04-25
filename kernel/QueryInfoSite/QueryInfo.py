@@ -13,7 +13,7 @@ def Query_UserRentingHis(user_id):
             cursor = connAction(conn, """
                     select Book.BookId, Book.BookName, BookType.TypeName, RentHistory.RentDay, RentHistory.ReturnDate
                     from User, Book, RentHistory, BookType
-                    where User.UserId = %s and BookType.TypeId = Book.Type
+                    where User.UserId = %s and BookType.TypeId = Book.TypeId
                     and User.UserId = RentHistory.UserId and Book.BookId = RentHistory.BookId
                 """ % (quote(user_id)))
         except sql.DatabaseError as e:
@@ -35,7 +35,7 @@ def Query_BookRank():
                 select BookId, count(*) as times from RentHistory
                 group by BookId
                 ) as temp
-                where Book.BookId = temp.BookId and Book.Type = BookType.TypeId
+                where Book.BookId = temp.BookId and Book.TypeId = BookType.TypeId
                 order by times desc""")
         except sql.DatabaseError as e:
             # 先放这个，不能没有显示
@@ -108,7 +108,7 @@ def Query_Book(TypeName, BookInfo):
             cursor = connAction(conn, """
                 select Book.BookName, Book.BookId
                 from Book, BookType
-                where Book.Type = BookType.TypeId and BookType.TypeName = {0}
+                where Book.TypeId = BookType.TypeId and BookType.TypeName = {0}
                 and Book.BookName like '%{1}%' and Book.Stock > 0
                 """.format(quote(TypeName), BookInfo))
         except sql.DatabaseError as e:
@@ -229,7 +229,7 @@ def Add_RentHis(UserId, BookId):
 def Add_Book(BookId, BookName, stock, price, BookType):
     with connGetter() as conn:
         connAction(conn, """
-        insert into Book(BookId,BookName,Stock,Price,Type)
+        insert into Book(BookId,BookName,Stock,Price,TypeId)
         values(
         '{}', '{}', {}, {}, '{}'
         )
@@ -298,9 +298,9 @@ def Update_BookInfo(pack):
                 update Book set BookName = '{}',
                 Stock = '{}',
                 Price = '{}',
-                Type = ''
+                TypeId = '{}'
                 where UserId = '{}' 
-                """.format(pack['name'], pack['Stock'], pack['price'], pack['type id'], pack['id']))
+                """.format(pack['name'], pack['stock'], pack['price'], pack['type id'], pack['id']))
     except Exception as e:
         raise RentRefuse(repr(e))
     pass
