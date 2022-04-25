@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 from Window_Classes.SuperPage.BookEditPage.BookEditPage import *
 from kernel.QueryInfoSite.QueryInfo import Add_Book, FetchAllBooks, FetchAllBookType, Query_BookType
-from kernel.QueryInfoSite.QueryInfo_sqlite import Add_BookType, Update_BookInfo
+from kernel.QueryInfoSite.QueryInfo import Add_BookType, Update_BookInfo
 
 
 class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage):

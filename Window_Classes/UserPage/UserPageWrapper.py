@@ -4,7 +4,7 @@ from Window_Classes.UserPage.UserPage import *
 from Window_Classes.UtilPages.PayMoneyPage.PayMoneyPageWrapper import PayMoneyPage
 
 from kernel.QueryInfoSite.QueryInfo import Query_UserRank, Query_BookRank
-from kernel.QueryInfoSite.QueryInfo_sqlite import FetchAllRoleTypes
+from kernel.QueryInfoSite.QueryInfo import FetchAllRoleTypes
 
 
 class UserPage(QtWidgets.QWidget, Ui_Form):

@@ -1,7 +1,7 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
 from Window_Classes.UtilPages.PayMoneyPage.PayMoneyPage import *
-from kernel.QueryInfoSite.QueryInfo_sqlite import Query_BookRank, Query_Price_Remain, Add_RentHis, Modify_Return, \
+from kernel.QueryInfoSite.QueryInfo import Query_BookRank, Query_Price_Remain, Add_RentHis, Modify_Return, \
     Update_RentDate
 
 

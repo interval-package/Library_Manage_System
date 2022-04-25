@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 from Window_Classes.SuperPage.UserEditPage.UserEditPage import *
 from kernel.QueryInfoSite.QueryInfo import FetchAllRoleTypes, FetchAllUser, Add_User
-from kernel.QueryInfoSite.QueryInfo_sqlite import Update_UserInfo
+from kernel.QueryInfoSite.QueryInfo import Update_UserInfo
 
 
 class UserEditPage(QtWidgets.QWidget, Ui_UserEditPage):

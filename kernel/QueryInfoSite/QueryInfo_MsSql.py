@@ -7,15 +7,27 @@ class SqlServer(object):
     def __init__(self, host="(local)"):
         self.host = host
         with sql.connect(host=host, database=self.db) as conn:
-            if ~conn:
+            if conn is None:
                 raise ValueError("invalid host")
         pass
 
     def CallBase(self):
         conn = sql.connect(host=self.host, database=self.db)
-        if ~conn:
+        if not conn:
             raise ValueError("invalid host")
         return conn
+
+
+tar = SqlServer()
+
+
+def connGetter():
+    return tar.CallBase().cursor()
+
+
+def connAction(conn, command):
+    conn.execute(command)
+    return conn
 
 
 if __name__ == '__main__':
@@ -25,7 +37,7 @@ if __name__ == '__main__':
     else:
         exit(-1)
     cur = conn.cursor()
-    cur.execute("select * from UserInfo")
+    tar = cur.execute("select * from UserInfo")
     res = cur.fetchall()
     print(res)
     pass
