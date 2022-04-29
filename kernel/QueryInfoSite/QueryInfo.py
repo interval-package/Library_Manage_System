@@ -149,14 +149,14 @@ def Query_UnReturned_Book(UserId):
 def Query_Price_Remain(UserId, BookId=None, RentDate=None):
     req = """
         select * from UnreturnPrice
-        where UserId = {}
+        where UserId = '{}'
         """.format(str(UserId))
 
     if BookId is not None:
-        req += " and BookId = {}".format(str(BookId))
+        req += " and BookId = '{}'".format(str(BookId))
 
     if RentDate is not None:
-        req += " and RentDay = {}".format(str(RentDate))
+        req += " and RentDay = '{}'".format(str(RentDate))
 
     res = None
     with connGetter() as conn:
@@ -174,7 +174,7 @@ def Query_Price_Remain(UserId, BookId=None, RentDate=None):
 
 def Modify_Return(tar):
     if len(tar) != 3:
-        return
+        raise ReturnRefuse()
     UserId, BookId, RentDate = tar
     with connGetter() as conn:
         connAction(conn, """
@@ -200,7 +200,7 @@ def RentCertification(UserId, BookId) -> bool:
             pass
         else:
             if tar[0][1] >= tar[0][2]:
-                raise RentRefuse()
+                raise RentRefuse("too many books")
     with connGetter() as conn:
         cursor = connAction(conn, """
             select * from BookRemain
