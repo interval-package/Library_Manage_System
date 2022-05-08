@@ -199,6 +199,61 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage)
 
 ### 2.详细介绍
 
+#### 1.基本功能对象
+
+##### `DataLoader`
+
+##### `LoginUserDataLoader`
+
+##### `BasicUser`
+
+#### 2.界面显示对象
+
+对于每个界面，我们都有两个界面类，负责不同功能。
+
+```
+UI_Page
+负责界面内容ui的绘制与初始化。
+
+Page_Wrapper
+时UI_Page的子类，在UI_Page初始化ui的前提下，实现逻辑功能与转跳。
+```
+
+##### 1）主界面
+
+```python
+class Ui_MainWindow(object)
+class MainWindow(QMainWindow, Ui_MainWindow)
+```
+
+`def __init__(self)`
+
+初始化函数，负责承接UI类的内容初始化。
+
+`def setIcon(self)`
+
+`def switchPage(self, index)`
+
+`def LoginPage_Login(self)`
+
+`def SuperUserAction(self)`
+
+`def Echo_Fail_Authority(self)`
+
+`def SignUpPage_SignUpAction_Bind(self)`
+
+##### 2）登录界面
+
+##### 3）注册界面
+
+##### 4）用户界面
+
+##### 5）借书界面
+
+##### 6）归还界面
+
+#### 3.异常处理对象
+
 ## 2.基本功能函数
 
 ### 1.概览
@@ -248,8 +303,6 @@ def FetchAllRoleTypes()
 
 def FetchAllUser()
 ```
-
-
 
 ### 2.详细介绍
 
@@ -412,43 +465,68 @@ elif QueryMethod == 'sql_server':
 
 该函数实现借阅功能，会调用`RentCertification`进行借阅有效性的验证。
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+| param    | type                | description                |
+| -------- | ------------------- | -------------------------- |
+| `UserId` | str                 | 读者id                     |
+| `BookId` | str                 | 书本id                     |
+| returns  | none                |                            |
+| throws   | `sql.DatabaseError` | 数据库访问异常，在外部抓取 |
 
 ##### `def Add_Book(BookId, BookName, stock, price, BookType)`
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+由超级用户使用，用于添加书本。
+
+| param   | type                | description                |
+| ------- | ------------------- | -------------------------- |
+| `args`  | str                 | 一系列书本相关数据         |
+| returns | none                |                            |
+| throws  | `sql.DatabaseError` | 数据库访问异常，在外部抓取 |
 
 ##### `def Add_BookType(Id, Name)`
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+由超级用户使用，用于创建新的书本类型。
+
+| param   | type                | description |
+| ------- | ------------------- | ----------- |
+| Id      | str                 | 书本id      |
+| Name    | str                 | 书本名称    |
+| returns | none                | none        |
+| throws  | `sql.DatabaseError` | `           |
 
 ##### `def Add_User(UserId, UserName, Role, Password)`
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+可以被超级用户，或者是读者进行注册操作的时候调用。创建新用户。
+
+为了保护数据库安全性，该方式调用时具有限定性，只能创建老师或者是学生用户，不能创建超级用户。
+
+| param   | type                | description                  |
+| ------- | ------------------- | ---------------------------- |
+| `args`  | str                 | 读者的id，姓名，权限以及密码 |
+| returns | none                |                              |
+| throws  | `sql.DatabaseError` | `                            |
 
 ##### `def Update_UserInfo(pack)`
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+超级用户使用，用于修改已有的用户的属性。
+
+```python
+pack = dict()
+for i, title in zip(self.UserView.selectionModel().selectedIndexes(), self.UserInfoHeader):
+	pack[title] = i.data()
+	Update_UserInfo(pack)
+```
+
+| param   | type                  | description                      |
+| ------- | --------------------- | -------------------------------- |
+| pack    | `dict`                | 数据包，装载格式化的传入数据参数 |
+| returns | none                  |                                  |
+| throws  | `RentRefuse(repr(e))` | 拒绝借阅异常                     |
+
+对于打包内容需要有以下关键字：
+
+```python
+pack['name'], pack['password'], pack['role'], pack['id']
+```
 
 ##### `def Update_RentDate(UserId, BookId, RentDate)`
 
@@ -484,6 +562,8 @@ elif QueryMethod == 'sql_server':
 
 ##### `def FetchAllUser()`
 
+用于获取用户数据，该方法下获取所有用户的数据。
+
 | param | type | description |
 | ----- | ---- | ----------- |
 |       |      |             |
@@ -515,11 +595,13 @@ CREATE TABLE Book (
 
 书本表，存储书本的基本数据。每一本书对应一条唯一的书本id，同时对应一条该表内的记录。
 
-| Name | Data Type | PK   | FK   | Unique | Check | Default |
-| ---- | --------- | ---- | ---- | ------ | ----- | ------- |
-|      |           |      |      |        |       |         |
-|      |           |      |      |        |       |         |
-|      |           |      |      |        |       |         |
+| Name       | Data Type | PK   | FK                                               | Unique | Check    | Default |
+| ---------- | --------- | ---- | ------------------------------------------------ | ------ | -------- | ------- |
+| `BookId`   | char      | true |                                                  |        |          |         |
+| `BookName` | char      |      |                                                  |        |          |         |
+| `Stock`    | int       |      |                                                  |        |          | 0       |
+| `Price`    | int       |      |                                                  |        |          | 0       |
+| `TypeId`   | char      |      | `REFERENCES BookType (TypeId)`，参照`BookType表` |        | not null |         |
 
 ##### 2.BookType
 
@@ -572,30 +654,55 @@ CREATE TABLE UserRole (
 );
 ```
 
+读者类型与权限记录表，记录读者权限。
 
-
-| Name           | Data Type | PK   | FK   | Unique | Check | Default |
-| -------------- | --------- | ---- | ---- | ------ | ----- | ------- |
-| `RoleId`       |           |      |      |        |       |         |
-| `RoleName`     |           |      |      |        |       |         |
-| `Duration`     |           |      |      |        |       |         |
-| `LendingTimes` |           |      |      |        |       |         |
+| Name           | Data Type | PK   | FK   | Unique | Check          | Default |
+| -------------- | --------- | ---- | ---- | ------ | -------------- | ------- |
+| `RoleId`       | char      | true |      |        |                |         |
+| `RoleName`     | char      |      |      | true   |                |         |
+| `Duration`     | num       |      |      |        | check positive | 10      |
+| `LendingTimes` | num       |      |      |        | check positive | 10      |
 
 该表正常情况下，不允许添加新项目，固定信息如下：
 
-| Role       |      |      |
-| ---------- | ---- | ---- |
-| Super User |      |      |
-| Teacher    |      |      |
-| Students   |      |      |
+| Role         | `RoleId` | Duration | `LendingTimes` |
+| ------------ | -------- | -------- | -------------- |
+| `Super User` | 0        | 365      | 100            |
+| `Teacher`    | 1        | 30       | 10             |
+| `Students`   | 2        | 10       | 5              |
+
+系统借阅的基本参数，由该表决定，后续修改依照该表。
 
 ##### 5.RentHistory
 
-| Name | Data Type | PK   | FK   | Unique | Check | Default |
-| ---- | --------- | ---- | ---- | ------ | ----- | ------- |
-|      |           |      |      |        |       |         |
-|      |           |      |      |        |       |         |
-|      |           |      |      |        |       |         |
+```sql
+CREATE TABLE RentHistory (
+    UserId              REFERENCES User (UserId) 
+                        NOT NULL,
+    BookId              REFERENCES Book (BookId) 
+                        NOT NULL,
+    RentDay    DATETIME NOT NULL,
+    ReturnDate DATETIME,
+    PRIMARY KEY (
+        UserId,
+        BookId,
+        RentDay
+    )
+);
+```
+
+借阅记录表，该表负责记录所有的借阅与归还信息。
+
+每次借阅都会插入一条数据，并且设置`ReturnDate`的初始值为null。
+
+对于归还了的记录，`returnDate`将为非null，可以用于后续判断。
+
+| Name         | Data Type | PK   | FK                              | Unique | Check    | Default     |
+| ------------ | --------- | ---- | ------------------------------- | ------ | -------- | ----------- |
+| `UserId`     | char      | true | true `REFERENCES User (UserId)` |        | not null |             |
+| `BookId`     | char      | true | true `REFERENCES Book (BookId)` |        | not null |             |
+| `RentDay`    | Date      |      |                                 |        | not null | `getdate()` |
+| `ReturnDate` | Date      |      |                                 |        |          | null        |
 
 #### 2.表约束
 
