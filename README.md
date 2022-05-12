@@ -18,7 +18,33 @@
 
 ## 1.界面需求
 
+用户界面是人与计算机之间的媒介。用户通过用户界面来与计算机进行信息交换。因此，用户界面的质量，直接关系到应用系统的性能能否充分发挥，能否使用户准确、高效、轻松、愉快地工作。所以软件的友好性、易用性对于软件系统至关重要。
+
 对于我们的图书馆管理系统，我们对于用户的交互体验，总结出了一下几点基本需求：
+
+### 1.界面元素
+
+通常一个用户界面的元素包括界面主颜色、字体颜色、字体大小、界面布局、界面交互方式、界面功能分布、界面输入输出模式。其中，对用户工作效率有显著影响的元素包括：输入输出方式、交互方式、功能分布。
+
+软件界面作为一个整体，其中任何一个元素不符合用户习惯、不满足用户要求都将降低用户对软件系统的认可度，甚至影响用户的工作效率，而使用户最终放弃使用系统。
+
+对于我们的图书馆管理系统：
+
+- 界面应当精简而又能够覆盖所有的功能需求。
+- 每个相应功能要进行分页管理。
+- 页面转跳功能要全面。
+- 用户能自由的对界面上的每一项做出选择，且所有选择都是可逆的。在用户做出危险的选择时有信息提示是减少用户错误的有效方法。
+
+### 2.用户角色
+
+想他们所想，做他们所做。用户总是按照他们自己的方法理解和使用。在界面设计中采用以用户为中心的设计方法（*User Centered Design*），让用户真正参与到界面设计当中来。在最终界面设计中体现用户的想法，是设计出让用户满意的用户界面的关键。
+
+对于我们的图书管理系统，我们主要面对：
+
+- 学生用户
+- 教师用户
+- 图书管理员用户
+  - 对于管理员用户
 
 ## 2.功能需求
 
@@ -76,6 +102,8 @@
 
 保证只有超级用户可以进行数据的详细修改。
 
+保证只有超级用户可以进入权限管理界面，或者对数据库进行直接的修改。
+
 ## 3.性能需求
 
 ### 数据精确度 
@@ -108,21 +136,49 @@
 
 ## 1.逻辑流程设计
 
+### 1）登录逻辑流程
+
+![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\login_logic.png)
+
+### 2）借阅流程逻辑
+
+![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\rentting_logic.png)
+
+
+
 ## 2.页面逻辑设计
 
 在本次实践中，主要使用pyqt框架进行开发。
 
 `PyQt`实现了一个Python模块集。它有超过300类，将近6000个函数和方法。它是一个多平台的工具包，可以运行在所有主要操作系统上，包括UNIX，Windows和Mac。 `PyQt`采用双许可证，开发人员可以选择GPL和商业许可。在此之前，GPL的版本只能用在Unix上，从`PyQt`的版本4开始，GPL许可证可用于所有支持的平台。
 
+### 1）用户界面逻辑流程
+
+![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\user_page_logic.png)
+
 ## 3.对象设计
 
 在本次实践中，我们基本分为了三大族类对象：
 
-功能类对象：
+### 功能类对象：
 
-界面对象：
+主要负责数据的存储以及与数据库之间的数据交互。
 
-异常对象：
+![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\obj_pic\basic_util_class.png)
+
+### 界面对象：
+
+由于我们使用的是Qt框架，所以每个界面都是以类的形式定义。在不同的类与对象之间，存在着嵌套与继承的关系，基本关系如下图关系图所示。
+
+### 异常对象：
+
+在程序设计的过程中，由于用户的不安全操作，或者是一部分正常的但是不满足要求以至于被拒绝的操作，会导致程序出现异常。
+
+同时，我们通过异常来传递请求失败的信息，通过异常处理，来形成错误弹窗。
+
+异常对象的继承关系如下：
+
+
 
 ## 3.数据库设计
 
@@ -230,17 +286,69 @@ class MainWindow(QMainWindow, Ui_MainWindow)
 
 初始化函数，负责承接UI类的内容初始化。
 
+| param | type | description |
+| ----- | ---- | ----------- |
+|       |      |             |
+|       |      |             |
+|       |      |             |
+
 `def setIcon(self)`
+
+设置标签函数，设置我们函数的标签
+
+| param | type | description |
+| ----- | ---- | ----------- |
+|       |      |             |
+|       |      |             |
+|       |      |             |
 
 `def switchPage(self, index)`
 
+页面切换函数，进行一级主界面的转换与加载
+
+| param | type | description |
+| ----- | ---- | ----------- |
+|       |      |             |
+|       |      |             |
+|       |      |             |
+
 `def LoginPage_Login(self)`
+
+登录界面主要逻辑
+
+| param | type | description |
+| ----- | ---- | ----------- |
+|       |      |             |
+|       |      |             |
+|       |      |             |
 
 `def SuperUserAction(self)`
 
+| param | type | description |
+| ----- | ---- | ----------- |
+|       |      |             |
+|       |      |             |
+|       |      |             |
+
 `def Echo_Fail_Authority(self)`
 
+回显函数，在尝试进行超级用户操作，被拒绝的时候，进行调用。
+
+| param | type | description |
+| ----- | ---- | ----------- |
+|       |      |             |
+|       |      |             |
+|       |      |             |
+
 `def SignUpPage_SignUpAction_Bind(self)`
+
+绑定功能，在注册界面进行注册的操作。访问界面中的文本输入框，获取信息，访问数据库添加数据。
+
+| param | type | description |
+| ----- | ---- | ----------- |
+|       |      |             |
+|       |      |             |
+|       |      |             |
 
 ##### 2）登录界面
 
@@ -251,6 +359,14 @@ class MainWindow(QMainWindow, Ui_MainWindow)
 ##### 5）借书界面
 
 ##### 6）归还界面
+
+##### 7）权限界面
+
+##### 8）信息查询界面
+
+##### 9）修改用户界面
+
+##### 10）修改书籍界面
 
 #### 3.异常处理对象
 
@@ -772,13 +888,29 @@ CREATE TABLE RentHistory (
 
 #### 6.续借界面
 
+##### 未有过期书目：
+
 <img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\PayMoney.png" style="zoom:80%;" />
+
+##### 有过期书目：
+
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\Debt.png" style="zoom:50%;" />
 
 #### 7.尝试访问管理权限
 
 <img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\FailOfSuper.png" style="zoom: 50%;" />
 
 ### （2）超级用户流程展示
+
+#### 1.用户界面
+
+#### 2.权限界面
+
+#### 3.查询信息界面
+
+#### 4.修改读者信息界面
+
+#### 5.修改书本信息界面
 
 ## 2.数据输出展示
 
