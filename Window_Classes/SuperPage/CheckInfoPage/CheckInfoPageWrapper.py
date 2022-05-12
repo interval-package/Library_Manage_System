@@ -117,7 +117,7 @@ class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):
                         row.append(QStandardItem(detail))
                 model.appendRow(row)
             self.BookView.setModel(model)
-            self.UserRankTable.horizontalHeader().setStretchLastSection(True)
+            self.BookView.horizontalHeader().setStretchLastSection(True)
         except Exception as e:
             print(repr(e))
         pass
