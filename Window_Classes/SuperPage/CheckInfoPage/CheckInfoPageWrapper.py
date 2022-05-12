@@ -1,6 +1,7 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
 from Window_Classes.SuperPage.CheckInfoPage.CheckInfoPage import *
+from kernel.QueryInfoSite.QueryInfo import Query_Book, Query_BookType
 from kernel.SaveToExcel import *
 
 
@@ -12,15 +13,18 @@ class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):
 
         self.BookComboDict = {
             'Ranked Book': [Query_BookRank, self.updateBookRankPage],
+            'Query': [self.SaveQuery, self.Query]
         }
 
         self.UserComboDict = {
             'Ranked User': [Query_UserRank, self.updateUserRankPage],
         }
 
+        self.SetBookType()
+
         self.SetTypeListDict()
 
-        self.QueryBookButton.clicked.connect(self.Query_Book)
+        self.QueryBookButton.clicked.connect(self.Query)
         self.QueryUserButton.clicked.connect(self.Query_User)
 
         self.SaveBookButton.clicked.connect(self.SaveBookList)
@@ -81,7 +85,41 @@ class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):
         FileDir = QtWidgets.QFileDialog.getExistingDirectory(self, "选取文件位置", Filepath)
         return FileDir
 
-    def Query_Book(self):
+    def SetBookType(self):
+        for his in Query_BookType():
+            self.BookTypeCombo.addItem(his[1])
+
+    def SaveQuery(self):
+        Type = self.BookTypeCombo.currentText()
+        Name = self.BookNameLine.text()
+
+        try:
+            his = Query_Book(Type, Name)
+        except Exception as e:
+            print(repr(e))
+            his = []
+        return his
+
+    def Query(self):
+        Type = self.BookTypeCombo.currentText()
+        Name = self.BookNameLine.text()
+
+        try:
+            # self.BooksView.clear()
+            model = QStandardItemModel()
+            model.setHorizontalHeaderLabels(['name', 'id:Select here'])
+            for his in Query_Book(Type, Name):
+                row = []
+                for detail in his:
+                    if isinstance(detail, int):
+                        continue
+                    else:
+                        row.append(QStandardItem(detail))
+                model.appendRow(row)
+            self.BookView.setModel(model)
+            self.UserRankTable.horizontalHeader().setStretchLastSection(True)
+        except Exception as e:
+            print(repr(e))
         pass
 
     def Query_User(self):

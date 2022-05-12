@@ -57,6 +57,11 @@
       </item>
       <item>
        <property name="text">
+        <string>Query Book</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
         <string>UnReturned Book Info</string>
        </property>
       </item>
@@ -135,7 +140,7 @@
     <item row="3" column="0">
      <widget class="QLabel" name="label_10">
       <property name="text">
-       <string>Book Id</string>
+       <string>Book Name</string>
       </property>
      </widget>
     </item>
@@ -178,7 +183,7 @@
      <widget class="QLineEdit" name="lineEdit_9"/>
     </item>
     <item row="3" column="1" colspan="3">
-     <widget class="QLineEdit" name="BookIdLine"/>
+     <widget class="QLineEdit" name="BookNameLine"/>
     </item>
     <item row="5" column="4">
      <widget class="QLabel" name="label_7">
@@ -258,12 +263,9 @@
     <item row="4" column="0">
      <widget class="QLabel" name="label_12">
       <property name="text">
-       <string>Other Info</string>
+       <string>Type</string>
       </property>
      </widget>
-    </item>
-    <item row="4" column="1" colspan="3">
-     <widget class="QLineEdit" name="lineEdit_8"/>
     </item>
     <item row="5" column="0">
      <widget class="QLabel" name="label_11">
@@ -288,6 +290,9 @@
     </item>
     <item row="5" column="5" colspan="4">
      <widget class="QComboBox" name="UserAlineCombo"/>
+    </item>
+    <item row="4" column="1" colspan="3">
+     <widget class="QComboBox" name="BookTypeCombo"/>
     </item>
    </layout>
   </widget>
