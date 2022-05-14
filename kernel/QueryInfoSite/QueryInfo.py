@@ -121,6 +121,25 @@ def Query_Book(TypeName, BookInfo):
     return res
 
 
+def Query_User(UserId, UserName):
+    res = None
+    with connGetter() as conn:
+        try:
+            cursor = connAction(conn,"""
+            select * from User
+            where UserId like '%{0}%'
+            and UserName like '%{1}%'
+            """.format(UserId, UserName))
+        except sql.DatabaseError as e:
+            # 先放这个，不能没有显示
+            cursor = None
+            print("Query Fail", repr(e))
+            pass
+        if cursor is not None:
+            res = cursor.fetchall()
+    return res
+
+
 def Query_UnReturned_Book(UserId):
     res = None
     with connGetter() as conn:

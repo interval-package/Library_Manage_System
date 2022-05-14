@@ -2,7 +2,7 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QMessageBox
 
 from Window_Classes.SuperPage.CheckInfoPage.CheckInfoPage import *
-from kernel.QueryInfoSite.QueryInfo import Query_Book, Query_BookType
+from kernel.QueryInfoSite.QueryInfo import Query_Book, Query_BookType, Query_User
 from kernel.SaveToExcel import *
 
 
@@ -123,11 +123,30 @@ class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):
             print(repr(e))
         pass
 
+    UserHeader = ['UserName', 'UserId', 'times']
+
     def Query_User(self):
-        self.Echo_Fail("yet not allowed")
+        UserId = self.UserIdLine.text()
+        UserName = self.UserNameLine.text()
+        try:
+            # self.BooksView.clear()
+            model = QStandardItemModel()
+            model.setHorizontalHeaderLabels(['UserName', 'UserId', 'password'])
+            for his in Query_User(UserId, UserName):
+                row = []
+                for detail in his:
+                    if isinstance(detail, int):
+                        continue
+                    else:
+                        row.append(QStandardItem(detail))
+                model.appendRow(row)
+            self.UserView.setModel(model)
+            self.UserView.horizontalHeader().setStretchLastSection(True)
+        except Exception as e:
+            print(repr(e))
         pass
 
-    UserHeader = ['UserName', 'UserId', 'times']
+
 
     def updateUserRankPage(self) -> None:
         try:

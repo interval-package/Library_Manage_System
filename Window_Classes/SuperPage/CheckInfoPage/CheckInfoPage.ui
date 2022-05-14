@@ -46,7 +46,7 @@
      </widget>
     </item>
     <item row="3" column="5" colspan="4">
-     <widget class="QLineEdit" name="lineEdit_3"/>
+     <widget class="QLineEdit" name="UserNameLine"/>
     </item>
     <item row="0" column="1" colspan="3">
      <widget class="QComboBox" name="BookCombo">
@@ -80,7 +80,7 @@
        <string>UserName</string>
       </property>
       <property name="buddy">
-       <cstring>lineEdit_3</cstring>
+       <cstring>UserNameLine</cstring>
       </property>
      </widget>
     </item>
