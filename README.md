@@ -190,10 +190,6 @@
 
 SQLite，是一款轻型的数据库，是遵守ACID的关系型数据库管理系统，它包含在一个相对小的C库中。它是`D.RichardHipp`建立的公有领域项目。它的设计目标是嵌入式的，而且已经在很多嵌入式产品中使用了它，它占用资源非常的低，在嵌入式设备中，可能只需要几百K的内存就够了。它能够支持Windows/Linux/Unix等等主流的操作系统，同时能够跟很多程序语言相结合，比如 `Tcl`、C#、PHP、Java等，还有ODBC接口，同样比起`Mysql`、PostgreSQL这两款开源的世界著名数据库管理系统来讲，它的处理速度比他们都快。SQLite第一个Alpha版本诞生于2000年5月。 至2021年已经接近有21个年头，SQLite也迎来了一个版本 SQLite 3已经发布。
 
-#### 1）表结构
-
-#### 2）表约束
-
 ### (2) 远程数据库结构
 
 本系统同时支持SQL server数据库，并且支持远程连接。
@@ -201,10 +197,6 @@ SQLite，是一款轻型的数据库，是遵守ACID的关系型数据库管理�
 SQL Server 是Microsoft 公司推出的关系型数据库管理系统。具有使用方便可伸缩性好与相关软件集成程度高等优点，可跨越从运行Microsoft Windows 98 的膝上型电脑到运行Microsoft Windows 2012 的大型多处理器的服务器等多种平台使用。
 
 Microsoft SQL Server 是一个全面的数据库平台，使用集成的商业智能 (BI)工具提供了企业级的数据管理。Microsoft SQL Server 数据库引擎为关系型数据和结构化数据提供了更安全可靠的存储功能，使您可以构建和管理用于业务的高可用和高性能的数据应用程序。
-
-#### 1）表结构
-
-#### 2）表约束
 
 # 三、详细设计
 
@@ -288,87 +280,196 @@ class MainWindow(QMainWindow, Ui_MainWindow)
 
 初始化函数，负责承接UI类的内容初始化。
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+| param   | type | description |
+| ------- | ---- | ----------- |
+| returns | none | 无返回      |
 
 `def setIcon(self)`
 
 设置标签函数，设置我们函数的标签
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+| param   | type | description |
+| ------- | ---- | ----------- |
+| returns | none | 无返回      |
 
 `def switchPage(self, index)`
 
-页面切换函数，进行一级主界面的转换与加载
+页面切换函数，进行一级主界面的转换与加载。
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+使用`class QStackedWidget(QFrame)`进行切换，所有的页面内容挂载其中。
+
+| param   | type        | description        |
+| ------- | ----------- | ------------------ |
+| index   | int         | 需要切换的页面编号 |
+| throws  | index error |                    |
+| returns | none        |                    |
 
 `def LoginPage_Login(self)`
 
-登录界面主要逻辑
+登录界面主要逻辑。
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+调用`self.LoginPage.Login()`进行用户的登录逻辑。
+
+传递参数到其他页面。
+
+| param   | type | description |
+| ------- | ---- | ----------- |
+| returns | none |             |
 
 `def SuperUserAction(self)`
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+当用户尝试访问超级控制，判断
+
+| param   | type | description |
+| ------- | ---- | ----------- |
+| returns | none |             |
+|         |      |             |
+|         |      |             |
 
 `def Echo_Fail_Authority(self)`
 
 回显函数，在尝试进行超级用户操作，被拒绝的时候，进行调用。
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+弹出错误弹窗，告知用户信息。
+
+![image-20220513185458590](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\pop up\super fail.png)
+
+| param   | type     | description                        |
+| ------- | -------- | ---------------------------------- |
+| returns | none     |                                    |
+| pop up  | error    |                                    |
+| throws  | printing | no exception throws, but printing. |
 
 `def SignUpPage_SignUpAction_Bind(self)`
 
 绑定功能，在注册界面进行注册的操作。访问界面中的文本输入框，获取信息，访问数据库添加数据。
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+| param   | type | description |
+| ------- | ---- | ----------- |
+| returns | none |             |
 
 ##### 2）登录界面
 
+```python
+class Ui_LoginPage(object)
+class LoginPage(QtWidgets.QWidget, Ui_LoginPage)
+```
+
+
+
 ##### 3）注册界面
+
+```python
+class Ui_SignUpPage(object)
+class SignUpPage(QtWidgets.QWidget, Ui_SignUpPage)
+```
+
+`def Login(self)`
+
+`def LoginResult(self, user_id: str, password: str)`
+
+`def Echo_Login_Failed(self)`
+
+`def Echo_Login_Empty(self)`
+
+`def Echo_Login_Success(self)`
+
+`def MultiUserErrorFind(self)`
+
+
 
 ##### 4）用户界面
 
+```python
+class Ui_Form(object)
+class UserPage(QtWidgets.QWidget, Ui_Form)
+```
+
+`def SetUser(self, user)`
+
+`def updatePage(self)`
+
+`def updateUserInfoList(self)`
+
+`def updateRentedBookInfoList(self)`
+
+`def updateBookRankPage(self)`
+
+`def updateUserRankPage(self)`
+
+`def CallPayPage(self)`
+
+
+
 ##### 5）借书界面
+
+```python
+class Ui_RentingPage(object)
+class RentingPage(QtWidgets.QWidget, Ui_RentingPage)
+```
+
+`def setUser(self, User)`
+
+`def SetBookType(self)`
+
+`def updateRentedBookInfoList(self)`
+
+`def Query(self)`
+
+`def Rent(self)`
+
+`def Echo_Empty_Input(self, ms=None)`
+
+`def Echo_Success_Not(self, flag)`
+
+`def Echo_Fail_To_Rent(self)`
+
+
 
 ##### 6）归还界面
 
+```python
+class Ui_ReturnPage(object)
+class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage)
+```
+
+
+
 ##### 7）权限界面
+
+```python
+class Ui_SuperPage(object)
+class SuperPage(QtWidgets.QWidget, Ui_SuperPage)
+```
+
+
 
 ##### 8）信息查询界面
 
+```python
+class Ui_CheckInfoPage(object)
+class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage)
+```
+
+
+
 ##### 9）修改用户界面
 
+```python
+class Ui_UserEditPage(object)
+class UserEditPage(QtWidgets.QWidget, Ui_UserEditPage)
+```
+
+
+
 ##### 10）修改书籍界面
+
+```python
+class Ui_BookEditPage(object)
+class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage)
+```
+
+
 
 #### 3.异常处理对象
 
@@ -440,7 +541,7 @@ elif QueryMethod == 'sql_server':
 
 双内核处理方式，支持多种数据库类型访问。在修改参数后，会修改数据库访问函数的细节调用。
 
-##### `def Query_UserRentingHis(user_id)`
+`def Query_UserRentingHis(user_id)`
 
 该函数通过调用user_id，对数据库进行访问。会被User对象调用。
 
@@ -454,7 +555,7 @@ elif QueryMethod == 'sql_server':
 | returns | list | 一个两层的list结构，第一层每个元素为一个数据元组。 |
 | throws  | none | 不会抛出异常，但是当访问出错时，会打印异常状况     |
 
-##### `def Query_BookRank()`
+`def Query_BookRank()`
 
 该函数对数据库内容进行标准化访问。
 
@@ -468,7 +569,7 @@ elif QueryMethod == 'sql_server':
 | returns | list | 一个两层的list结构，第一层每个元素为一个数据元组。 |
 | throws  | none | 不会抛出异常，但是当访问出错时，会打印异常状况     |
 
-##### `def Query_UserRank()`
+`def Query_UserRank()`
 
 该函数对数据库内容进行标准化访问，与`Query_BookRank`类似。
 
@@ -482,7 +583,7 @@ elif QueryMethod == 'sql_server':
 | returns | list | 一个两层的list结构，第一层每个元素为一个数据元组。尚未进行`Dict`封装。 |
 | throws  | none | 不会抛出异常，但是当访问出错时，会打印异常状况               |
 
-##### `def Query_BookType()`
+`def Query_BookType()`
 
 同族类似功能函数有：
 
@@ -497,7 +598,7 @@ elif QueryMethod == 'sql_server':
 | returns | list | 一个两层的list结构，第一层每个元素为一个数据元组。尚未进行Dict封装。 |
 | throws  | none | 不会抛出异常，但是当访问出错时，会打印异常状况               |
 
-##### `def Query_Book(TypeName, BookInfo)`
+`def Query_Book(TypeName, BookInfo)`
 
 该函数用于查询书本列表，按照书本的类型以及书本名称（可以不用完全相等）来查找书籍。
 
@@ -508,7 +609,7 @@ elif QueryMethod == 'sql_server':
 | returns    | list | 一个两层的list结构，第一层每个元素为一个数据元组。尚未进行`Dict`封装。 |
 | throws     | none | 不会抛出异常，但是当访问出错时，会打印异常状况。             |
 
-##### `def Query_UnReturned_Book(UserId)`
+`def Query_UnReturned_Book(UserId)`
 
 按照`UserId`从数据库中查询用户尚未归还的书籍。
 
@@ -518,7 +619,7 @@ elif QueryMethod == 'sql_server':
 | returns  | list | 一个两层的list结构，第一层每个元素为一个数据元组。尚未进行`Dict`封装。 |
 | throws   | none | 不会抛出异常，但是当访问出错时，会打印异常状况。             |
 
-##### `def Query_Price_Remain(UserId, BookId=None, RentDate=None)`
+`def Query_Price_Remain(UserId, BookId=None, RentDate=None)`
 
 借阅的记录由`UserId`，`BookId`以及借阅日期决定。
 
@@ -547,7 +648,7 @@ elif QueryMethod == 'sql_server':
 | returns    | list                                | 一个两层的list结构，第一层每个元素为一个数据元组。尚未进行`Dict`封装。 |
 | throws     | none                                | 打印发生的异常状态                                           |
 
-##### `def Modify_Return(tar)`
+`def Modify_Return(tar)`
 
 ```python
     UserId, BookId, RentDate = tar
@@ -562,7 +663,7 @@ elif QueryMethod == 'sql_server':
 | throws  | ReturnRefuse        | 异常，表示传入数据包不符合要求                               |
 | throws  | `sql.DatabaseError` | 数据库访问异常，需要在外部捕获，表示访问失败                 |
 
-##### `def RentCertification(UserId, BookId) -> bool`
+`def RentCertification(UserId, BookId) -> bool`
 
 本地数据库使用，由于sqlite不支持复杂的触发器操作，则使用函数进行详细约束。
 
@@ -579,7 +680,7 @@ elif QueryMethod == 'sql_server':
 | throws   | `RentRefuse("no book remain")` | 借阅验证失败，图书馆没有剩余书目 |
 | throws   | `sql.DatabaseError`            | 数据库访问异常，在外部抓取       |
 
-##### `def Add_RentHis(UserId, BookId)`
+`def Add_RentHis(UserId, BookId)`
 
 该函数实现借阅功能，会调用`RentCertification`进行借阅有效性的验证。
 
@@ -590,7 +691,7 @@ elif QueryMethod == 'sql_server':
 | returns  | none                |                            |
 | throws   | `sql.DatabaseError` | 数据库访问异常，在外部抓取 |
 
-##### `def Add_Book(BookId, BookName, stock, price, BookType)`
+`def Add_Book(BookId, BookName, stock, price, BookType)`
 
 由超级用户使用，用于添加书本。
 
@@ -600,7 +701,7 @@ elif QueryMethod == 'sql_server':
 | returns | none                |                            |
 | throws  | `sql.DatabaseError` | 数据库访问异常，在外部抓取 |
 
-##### `def Add_BookType(Id, Name)`
+`def Add_BookType(Id, Name)`
 
 由超级用户使用，用于创建新的书本类型。
 
@@ -611,7 +712,7 @@ elif QueryMethod == 'sql_server':
 | returns | none                | none        |
 | throws  | `sql.DatabaseError` | `           |
 
-##### `def Add_User(UserId, UserName, Role, Password)`
+`def Add_User(UserId, UserName, Role, Password)`
 
 可以被超级用户，或者是读者进行注册操作的时候调用。创建新用户。
 
@@ -623,7 +724,7 @@ elif QueryMethod == 'sql_server':
 | returns | none                |                              |
 | throws  | `sql.DatabaseError` | `                            |
 
-##### `def Update_UserInfo(pack)`
+`def Update_UserInfo(pack)`
 
 超级用户使用，用于修改已有的用户的属性。
 
@@ -646,7 +747,7 @@ for i, title in zip(self.UserView.selectionModel().selectedIndexes(), self.UserI
 pack['name'], pack['password'], pack['role'], pack['id']
 ```
 
-##### `def Update_RentDate(UserId, BookId, RentDate)`
+`def Update_RentDate(UserId, BookId, RentDate)`
 
 | param | type | description |
 | ----- | ---- | ----------- |
@@ -654,7 +755,7 @@ pack['name'], pack['password'], pack['role'], pack['id']
 |       |      |             |
 |       |      |             |
 
-##### `def Update_BookInfo(pack)`
+`def Update_BookInfo(pack)`
 
 | param | type | description |
 | ----- | ---- | ----------- |
@@ -662,7 +763,7 @@ pack['name'], pack['password'], pack['role'], pack['id']
 |       |      |             |
 |       |      |             |
 
-##### `def FetchAllBooks()`
+`def FetchAllBooks()`
 
 | param | type | description |
 | ----- | ---- | ----------- |
@@ -670,7 +771,7 @@ pack['name'], pack['password'], pack['role'], pack['id']
 |       |      |             |
 |       |      |             |
 
-##### `def FetchAllRoleTypes()`
+`def FetchAllRoleTypes()`
 
 | param | type | description |
 | ----- | ---- | ----------- |
@@ -678,7 +779,7 @@ pack['name'], pack['password'], pack['role'], pack['id']
 |       |      |             |
 |       |      |             |
 
-##### `def FetchAllUser()`
+`def FetchAllUser()`
 
 用于获取用户数据，该方法下获取所有用户的数据。
 
@@ -826,6 +927,53 @@ CREATE TABLE RentHistory (
 
 #### 3.视图设计
 
+##### `BookRemain`
+
+```sql
+Select Book.BookId, Book.Stock-temp.num remain from Book
+inner join
+(
+select BookId, count(*) num
+from RentHistory
+where ReturnDate is null
+group by BookId
+)as temp
+on temp.BookId = Book.BookId
+```
+
+
+
+##### `UnreturnPrice`
+
+```sql
+select User.UserId, Book.BookId,Book.BookName, Book.Price, RentHistory.RentDay
+from Book, RentHistory, User, UserRole
+where Book.BookId = RentHistory.BookId
+and User.UserId = RentHistory.UserId
+and USer.Role = UserRole.RoleId
+and RentHistory.ReturnDate is null
+and
+date(RentHistory.RentDay, '+'||cast(UserRole.Duration as string)|| ' day') < date('now')
+```
+
+
+
+##### `UserUnReturn_Count`
+
+```sql
+select User.UserId, temp.times, UserRole.LendingTimes from User, UserRole,
+(
+select UserId, count(*) as times
+from RentHistory
+where ReturnDate is null
+group by UserID
+) as temp
+where User.Role = UserRole.RoleId
+and User.UserId = temp.UserId
+```
+
+
+
 #### 4.触发器设计
 
 ### (2) 远程链接数据库
@@ -938,9 +1086,13 @@ CREATE TABLE RentHistory (
 
 ### 1) 概念收获
 
-在本次的程序设计课程设计中，我收获了许多。首先是
+在本次的程序设计课程设计中，我收获了许多。首先是更加了解了软件工程的实际含义，与在实际工程中所需要的思考方式与想法。
 
 ### 2) 技术收获
+
+#### 1.前端技术收获
+
+#### 2.数据库技术收获
 
 ## 3.遇到困难
 

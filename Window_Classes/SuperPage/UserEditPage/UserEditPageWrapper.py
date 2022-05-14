@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 from Window_Classes.SuperPage.UserEditPage.UserEditPage import *
 from kernel.QueryInfoSite.QueryInfo import FetchAllRoleTypes, FetchAllUser, Add_User
-from kernel.QueryInfoSite.QueryInfo import Update_UserInfo
+from kernel.QueryInfoSite.QueryInfo import Update_UserInfo, connGetter, connAction
 
 
 class UserEditPage(QtWidgets.QWidget, Ui_UserEditPage):
@@ -24,7 +24,19 @@ class UserEditPage(QtWidgets.QWidget, Ui_UserEditPage):
         self.ChangeUserButton.clicked.connect(self.ChangeUserInfoAction)
         self.RefreshButton.clicked.connect(self.RefreshViews)
         self.AddUserButton.clicked.connect(self.AddUserAction)
+        self.DeleteUserButton.clicked.connect(lambda: self.Echo_Fail("with reference"))
+        self.CommitButton.clicked.connect(self.CommandCommit)
+        pass
 
+    def CommandCommit(self):
+        try:
+            info = self.SuperCommandEdit.text()
+            with connGetter() as conn:
+                cursor = connAction(conn, info)
+                self.Echo_Success()
+                self.SuperCommandEdit.setText(info)
+        except Exception as e:
+            self.Echo_Fail(repr(e))
         pass
 
     def RefreshViews(self):

@@ -1,4 +1,5 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtWidgets import QMessageBox
 
 from Window_Classes.SuperPage.CheckInfoPage.CheckInfoPage import *
 from kernel.QueryInfoSite.QueryInfo import Query_Book, Query_BookType
@@ -123,6 +124,7 @@ class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):
         pass
 
     def Query_User(self):
+        self.Echo_Fail("yet not allowed")
         pass
 
     UserHeader = ['UserName', 'UserId', 'times']
@@ -141,7 +143,7 @@ class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):
                 model.appendRow(row)
             self.UserView.setModel(model)
             # 水平方向标签拓展剩下的窗口部分，填满表格
-            self.UserRankTable.horizontalHeader().setStretchLastSection(True)
+            self.UserView.horizontalHeader().setStretchLastSection(True)
         except Exception as e:
             print(repr(e))
         pass
@@ -158,6 +160,9 @@ class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage):
         SaveToExcel(path, 'Book', self.UserComboDict[tar][0])
         pass
 
-    @staticmethod
-    def BindOptionsDict():
-        return
+    def Echo_Fail(self, ms):
+        msg = QMessageBox(self)
+        msg.setWindowTitle("Error!")
+        msg.setText(str(ms))
+        msg.setIcon(QMessageBox.Critical)
+        msg.exec_()

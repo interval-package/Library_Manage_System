@@ -299,7 +299,7 @@ def Update_BookInfo(pack):
                 Stock = '{}',
                 Price = '{}',
                 TypeId = '{}'
-                where UserId = '{}' 
+                where BookId = '{}' 
                 """.format(pack['name'], pack['stock'], pack['price'], pack['type id'], pack['id']))
     except Exception as e:
         raise RentRefuse(repr(e))

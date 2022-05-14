@@ -19,7 +19,11 @@ class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage):
 
         self.RefreshButton.clicked.connect(self.RefreshViews)
 
-        self.AddBookButton.clicked.connect(self.AddBookType)
+        self.AddTypeButton.clicked.connect(self.AddBookType)
+
+        self.DeleteTypeButton.clicked.connect(lambda: self.Echo_Fail("have reference, could not delete"))
+
+        self.DeleteButton.clicked.connect(lambda: self.Echo_Fail("have reference, could not delete"))
 
         pass
 
