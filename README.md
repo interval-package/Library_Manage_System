@@ -44,7 +44,9 @@
 - 学生用户
 - 教师用户
 - 图书管理员用户
-  - 对于管理员用户
+  - 对于管理员用户，我们要允许高级操作
+
+![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\UserRole.png)
 
 ## 2.功能需求
 
@@ -98,11 +100,15 @@
 
 应当设计可以多种数据库方式，可以连接到本地内置服务器，也应当可以通过地址连接到云端服务器。
 
+<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\本地与云端.png" style="zoom:50%;" />
+
 ### （4）安全功能要素
 
 保证只有超级用户可以进行数据的详细修改。
 
 保证只有超级用户可以进入权限管理界面，或者对数据库进行直接的修改。
+
+![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\Safety.png)
 
 ## 3.性能需求
 
@@ -144,6 +150,10 @@
 
 ![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\rentting_logic.png)
 
+### 3）管理员权限流程
+
+![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\superpage_logic.png)
+
 
 
 ## 2.页面逻辑设计
@@ -176,7 +186,7 @@
 
 在程序设计的过程中，由于用户的不安全操作，或者是一部分正常的但是不满足要求以至于被拒绝的操作，会导致程序出现异常。
 
-同时，我们通过异常来传递请求失败的信息，通过异常处理，来形成错误弹窗。
+同时，我们通过异常来传递请求失败的信息，通过异常处理，来形成错误弹窗。主要使用qt原生错误族类，以及sql错误族类。
 
 异常对象的继承关系如下：
 
@@ -433,6 +443,14 @@ class Ui_ReturnPage(object)
 class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage)
 ```
 
+`def SetUser(self, User)`
+
+`def updatePage(self) -> None`
+
+`def updateRentedBookInfoList(self) -> None`
+
+`def ReturnBook(self)`
+
 
 
 ##### 7）权限界面
@@ -441,6 +459,8 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage)
 class Ui_SuperPage(object)
 class SuperPage(QtWidgets.QWidget, Ui_SuperPage)
 ```
+
+`def switchPage(self, index)`
 
 
 
@@ -451,6 +471,26 @@ class Ui_CheckInfoPage(object)
 class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage)
 ```
 
+`def SetTypeListDict(self)`
+
+`def RefreshPageInfo(self)`
+
+`def RefreshUserList(self)`
+
+`def RefreshBookList(self)`
+
+`def updateBookRankPage(self) -> None`
+
+`def MessageOfGettingPath(self, Filepath=None)`
+
+`def SetBookType(self)`
+
+`def SaveQuery(self)`
+
+`def Query(self)`
+
+`def Query_User(self)`
+
 
 
 ##### 9）修改用户界面
@@ -460,6 +500,26 @@ class Ui_UserEditPage(object)
 class UserEditPage(QtWidgets.QWidget, Ui_UserEditPage)
 ```
 
+`def CommandCommit(self)`
+
+`def RefreshViews(self)`
+
+`def UpdateRoleView(self)`
+
+`def ChangeUserInfoAction(self)`
+
+`def AddUserAction(self)`
+
+`def UpdateUserView(self)`
+
+`def SetBookType(self)`
+
+`def Echo_Empty_Input(self, ms=None)`
+
+`def Echo_Fail(self, ms)`
+
+`def Echo_Success(self)`
+
 
 
 ##### 10）修改书籍界面
@@ -468,6 +528,22 @@ class UserEditPage(QtWidgets.QWidget, Ui_UserEditPage)
 class Ui_BookEditPage(object)
 class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage)
 ```
+
+`def RefreshViews(self)`
+
+`def AddBookType(self)`
+
+`def ChangeBookAction(self)`
+
+`def AddBookAction(self)`
+
+`def Echo_Empty_Input(self, ms=None)`
+
+`def Echo_Fail(self, ms)`
+
+`def Echo_Success(self)`
+
+`def SetBookType(self)`
 
 
 

@@ -48,8 +48,5 @@ class SuperPage(QtWidgets.QWidget, Ui_SuperPage):
 
         pass
 
-    def SwitchPageAction(self):
-        pass
-
     def switchPage(self, index):
         self.stackWidget.setCurrentIndex(index)
