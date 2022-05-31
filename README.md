@@ -1,5 +1,9 @@
 # Library Manage System
 
+[TOC]
+
+
+
 # 一、需求分析
 
 移动互联网技术在图书馆数字化进程中应用广泛、效果显著，这不仅弥补了传统图书管理模式效率低下、难于管理的不足，还方便了众多读者用户，而图书馆全盘数字化也是未来的发展趋势。
@@ -16,13 +20,13 @@
 
 在本次课程设计中，基于任务要求，我们设计了一套图书馆管理系统，结合各个方面的考虑，我们认为我们的系统有以下基本需求：
 
-## 1.界面需求
+## 界面需求
 
 用户界面是人与计算机之间的媒介。用户通过用户界面来与计算机进行信息交换。因此，用户界面的质量，直接关系到应用系统的性能能否充分发挥，能否使用户准确、高效、轻松、愉快地工作。所以软件的友好性、易用性对于软件系统至关重要。
 
 对于我们的图书馆管理系统，我们对于用户的交互体验，总结出了一下几点基本需求：
 
-### 1.界面元素
+### 界面元素
 
 通常一个用户界面的元素包括界面主颜色、字体颜色、字体大小、界面布局、界面交互方式、界面功能分布、界面输入输出模式。其中，对用户工作效率有显著影响的元素包括：输入输出方式、交互方式、功能分布。
 
@@ -35,7 +39,7 @@
 - 页面转跳功能要全面。
 - 用户能自由的对界面上的每一项做出选择，且所有选择都是可逆的。在用户做出危险的选择时有信息提示是减少用户错误的有效方法。
 
-### 2.用户角色
+### 用户角色
 
 想他们所想，做他们所做。用户总是按照他们自己的方法理解和使用。在界面设计中采用以用户为中心的设计方法（*User Centered Design*），让用户真正参与到界面设计当中来。在最终界面设计中体现用户的想法，是设计出让用户满意的用户界面的关键。
 
@@ -46,13 +50,13 @@
 - 图书管理员用户
   - 对于管理员用户，我们要允许高级操作
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\UserRole.png)
+![](.\DisplayPics\Process_pic\UserRole.png)
 
-## 2.功能需求
+## 功能需求
 
 对于我们的系统，我们对于功能的需求可以基本分为以下大类：
 
-### （1）基本功能要素
+### 基本功能要素
 
 主要包括管理图书的库存信息、每一本书的借阅信息以及每一个人的借书信息。
 
@@ -60,11 +64,11 @@
 - 每一本被借阅的书都包括如下信息：编号、书名、金额、借书证号、借书日期、到期日期、罚款金额等。
 - 每一个人的借书信息包括借书证号、姓名、班级、学号等。
 
-#### A、借阅资料管理 
+#### 借阅资料管理 
 
 要求把书籍、期刊、报刊分类管理，这样的话操作会更加灵活和方便，可以随时对其相 关资料进行添加、删除、修改、查询等操作。
 
-#### B、借阅管理
+#### 借阅管理
 
 (1) 借出操作：用户能够通过界面对目标书籍进行检索，查询，选择目标的对象。
 
@@ -72,7 +76,7 @@
 
 (3) 续借处理：对于已经到达期限的书籍，用户可以在界面内通过金额补偿进行续借。
 
-#### C、读者管理 
+#### 读者管理 
 
 读者等级：对借阅读者进行分类处理，例如可分为教师和学生两类。并定义每类读者的可借书数量和相关的借阅时间等信息。
 
@@ -80,37 +84,37 @@
 
 在本图书管理系统中，最终用户为图书馆管理员以及借书人，其中，借书人只能进行图书书目查询、图书管理员能进行全部操作，所以要求图书管理员能充分掌握该系统。读者通过图书证可以进行查询图书馆书目，查询自己的借阅信息。管理员可以通过此系统对书进行借出登记、增加/删除新书、查询书目信息 、查询借阅信息的功能。
 
-#### D、统计分析
+#### 统计分析
 
 随时可以进行统计分析，以便及时了解当前的借阅情况和相关的资料状态，统计分析包括借阅排行榜、资料状态统计和借阅统计、显示所有至当日内到期未还书信息 等功能分析。
 
-#### E、系统参数设置
+#### 系统参数设置
 
 可以设置相关的罚款金额，最多借阅天数等系统服务器参数。
 
-### （2）拓展功能要素
+### 拓展功能要素
 
-#### 1.信息导出
+#### 信息导出
 
 对于超级用户，允许对数据进行直接的查寻，并且可以通过选择路径的方式，将查询结果的数据导出到excel表格。
 
-### （3）移植功能要素
+### 移植功能要素
 
-#### 1.本地与云端
+#### 本地与云端
 
 应当设计可以多种数据库方式，可以连接到本地内置服务器，也应当可以通过地址连接到云端服务器。
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\本地与云端.png" style="zoom:50%;" />
+<img src=".\DisplayPics\Process_pic\本地与云端.png" style="zoom:50%;" />
 
-### （4）安全功能要素
+### 安全功能要素
 
 保证只有超级用户可以进行数据的详细修改。
 
 保证只有超级用户可以进入权限管理界面，或者对数据库进行直接的修改。
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\Safety.png)
+![](.\DisplayPics\Process_pic\Safety.png)
 
-## 3.性能需求
+## 性能需求
 
 ### 数据精确度 
 
@@ -140,49 +144,53 @@
 
 # 二、总体设计
 
-## 1.逻辑流程设计
+## 逻辑流程设计
 
-### 1）登录逻辑流程
+### 登录逻辑流程
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\login_logic.png)
+![](.\DisplayPics\Process_pic\login_logic.png)
 
-### 2）借阅流程逻辑
+### 借阅流程逻辑
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\rentting_logic.png)
+![](.\DisplayPics\Process_pic\rentting_logic.png)
 
-### 3）管理员权限流程
+### 管理员权限流程
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\superpage_logic.png)
+![](.\DisplayPics\Process_pic\superpage_logic.png)
 
 
 
-## 2.页面逻辑设计
+## 页面逻辑设计
 
 在本次实践中，主要使用pyqt框架进行开发。
 
 `PyQt`实现了一个Python模块集。它有超过300类，将近6000个函数和方法。它是一个多平台的工具包，可以运行在所有主要操作系统上，包括UNIX，Windows和Mac。 `PyQt`采用双许可证，开发人员可以选择GPL和商业许可。在此之前，GPL的版本只能用在Unix上，从`PyQt`的版本4开始，GPL许可证可用于所有支持的平台。
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Outter\qt.png)
+<img src=".\DisplayPics\Outter\qt.png" style="zoom: 50%;" />
 
-### 1）用户界面逻辑流程
+### 用户界面逻辑流程
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Process_pic\user_page_logic.png)
+![](.\DisplayPics\Process_pic\user_page_logic.png)
 
-## 3.对象设计
+## 对象设计
 
 在本次实践中，我们基本分为了三大族类对象：
+
+- 功能类对象
+- 界面类对象
+- 异常类对象
 
 ### 功能类对象：
 
 主要负责数据的存储以及与数据库之间的数据交互。
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\obj_pic\basic_util_class.png)
+![](.\DisplayPics\obj_pic\basic_util_class.png)
 
 ### 界面对象：
 
 由于我们使用的是Qt框架，所以每个界面都是以类的形式定义。在不同的类与对象之间，存在着嵌套与继承的关系，基本关系如下图关系图所示。
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\obj_pic\page_objs.png)
+![](.\DisplayPics\obj_pic\page_objs.png)
 
 ### 异常对象：
 
@@ -190,21 +198,17 @@
 
 同时，我们通过异常来传递请求失败的信息，通过异常处理，来形成错误弹窗。主要使用qt原生错误族类，以及sql错误族类。
 
-异常对象的继承关系如下：
+## 数据库设计
 
-
-
-## 3.数据库设计
-
-### (1) 本地数据库结构
+### 本地数据库结构
 
 本项目源码中内置sqlite轻量型数据库，可以提供用户直接使用。
 
 SQLite，是一款轻型的数据库，是遵守ACID的关系型数据库管理系统，它包含在一个相对小的C库中。它是`D.RichardHipp`建立的公有领域项目。它的设计目标是嵌入式的，而且已经在很多嵌入式产品中使用了它，它占用资源非常的低，在嵌入式设备中，可能只需要几百K的内存就够了。它能够支持Windows/Linux/Unix等等主流的操作系统，同时能够跟很多程序语言相结合，比如 `Tcl`、C#、PHP、Java等，还有ODBC接口，同样比起`Mysql`、PostgreSQL这两款开源的世界著名数据库管理系统来讲，它的处理速度比他们都快。SQLite第一个Alpha版本诞生于2000年5月。 至2021年已经接近有21个年头，SQLite也迎来了一个版本 SQLite 3已经发布。
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Outter\sqlite.png)
+![](.\DisplayPics\Outter\sqlite.png)
 
-### (2) 远程数据库结构
+### 远程数据库结构
 
 本系统同时支持SQL server数据库，并且支持远程连接。
 
@@ -212,16 +216,15 @@ SQL Server 是Microsoft 公司推出的关系型数据库管理系统。具有�
 
 Microsoft SQL Server 是一个全面的数据库平台，使用集成的商业智能 (BI)工具提供了企业级的数据管理。Microsoft SQL Server 数据库引擎为关系型数据和结构化数据提供了更安全可靠的存储功能，使您可以构建和管理用于业务的高可用和高性能的数据应用程序。
 
-![image-20220516095610379](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\Outter\sql_server.png)
+![image-20220516095610379](.\DisplayPics\Outter\sql_server.png)
 
 # 三、详细设计
 
-## 1.基本对象
+## 基本对象
 
-### 1.概览
+### 概览
 
 ```python
-
 ## 基本功能对象
 
 class DataLoader(object)
@@ -257,23 +260,30 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage)
 # 归还界面
 class Ui_ReturnPage(object)
 class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage)
-
-## 异常处理对象
 ```
 
 
 
-### 2.详细介绍
+### 详细介绍
 
-#### 1.基本功能对象
+#### 基本功能对象
 
 ##### `DataLoader`
 
-##### `LoginUserDataLoader`
+初始化数据库，用于导入数据。封装数据库访问接口，适配云端与本地服务。
+
+![](.\DisplayPics\obj_pic\dataloader.png)
 
 ##### `BasicUser`
 
-#### 2.界面显示对象
+用户对象模型：
+
+| field             |                |
+| ----------------- | -------------- |
+| user info         | 基础的用户信息 |
+| user rent history | 用户的借阅信息 |
+
+#### 界面显示对象
 
 对于每个界面，我们都有两个界面类，负责不同功能。
 
@@ -285,7 +295,7 @@ Page_Wrapper
 时UI_Page的子类，在UI_Page初始化ui的前提下，实现逻辑功能与转跳。
 ```
 
-##### 1）主界面
+##### 主界面
 
 ```python
 class Ui_MainWindow(object)
@@ -341,7 +351,7 @@ class MainWindow(QMainWindow, Ui_MainWindow)
 | returns | none |                        |
 | throws  | none | 当非法访问时，弹出弹窗 |
 
-###### 报错函数
+**报错函数**
 
 `def Echo_Fail_Authority(self)`
 
@@ -349,7 +359,7 @@ class MainWindow(QMainWindow, Ui_MainWindow)
 
 弹出错误弹窗，告知用户信息。
 
-![image-20220513185458590](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\pop up\super fail.png)
+![image-20220513185458590](.\DisplayPics\pop up\super fail.png)
 
 | param   | type     | description                        |
 | ------- | -------- | ---------------------------------- |
@@ -365,7 +375,7 @@ class MainWindow(QMainWindow, Ui_MainWindow)
 | ------- | ---- | -------------------------------------------- |
 | returns | none | 将登录逻辑绑定到目标结构上，初始化登录逻辑。 |
 
-##### 2）登录界面
+##### 登录界面
 
 ```python
 class Ui_LoginPage(object)
@@ -376,7 +386,7 @@ class LoginPage(QtWidgets.QWidget, Ui_LoginPage)
 
 `def LoginResult(self, user_id: str, password: str)`
 
-###### 报错函数
+**报错函数**
 
 1. `def Echo_Login_Failed(self)`
 2. `def Echo_Login_Empty(self)`
@@ -384,12 +394,12 @@ class LoginPage(QtWidgets.QWidget, Ui_LoginPage)
 3. `def Echo_Login_Success(self)`
 4. `def MultiUserErrorFind(self)`
 
-| param   | type | description |
-| ------- | ---- | ----------- |
-| returns | none |             |
-|         |      |             |
+| param   | type | description                            |
+| ------- | ---- | -------------------------------------- |
+| returns | none |                                        |
+| pop up  |      | 调用标准错误提示窗口，显示当前错误信息 |
 
-##### 3）注册界面
+##### 注册界面
 
 ```python
 class Ui_SignUpPage(object)
@@ -412,7 +422,7 @@ class SignUpPage(QtWidgets.QWidget, Ui_SignUpPage)
 | ------- | ---- | -------------------------------- |
 | returns | none | 进行弹窗，显示错误，或者成功信息 |
 
-##### 4）用户界面
+##### 用户界面
 
 ```python
 class Ui_Form(object)
@@ -446,7 +456,7 @@ class UserPage(QtWidgets.QWidget, Ui_Form)
 
 调用支付所有欠款的页面。
 
-##### 5）借书界面
+##### 借书界面
 
 ```python
 class Ui_RentingPage(object)
@@ -465,7 +475,7 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage)
 
 根据查询结果，更新已经借阅了的书本信息。
 
-###### 核心功能函数
+**核心功能函数**
 
 `def Query(self)`
 
@@ -480,11 +490,9 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage)
 
 基本逻辑流程如下。
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\obj_pic\rentAndQuery.png)
+![](.\DisplayPics\obj_pic\rentAndQuery.png)
 
-------
-
-###### 报错函数
+**报错函数**
 
 `def Echo_Empty_Input(self, ms=None)`
 
@@ -496,7 +504,7 @@ class RentingPage(QtWidgets.QWidget, Ui_RentingPage)
 | ------- | ---- | -------------------------------- |
 | returns | none | 进行弹窗，显示错误，或者成功信息 |
 
-##### 6）归还界面
+##### 归还界面
 
 ```python
 class Ui_ReturnPage(object)
@@ -521,7 +529,7 @@ class ReturnPage(QtWidgets.QWidget, Ui_ReturnPage)
 | returns | none |                  |
 | inputs  | none | 从表格中获取信息 |
 
-##### 7）权限界面
+##### 权限界面
 
 ```python
 class Ui_SuperPage(object)
@@ -532,9 +540,9 @@ class SuperPage(QtWidgets.QWidget, Ui_SuperPage)
 
 进行挂载页面的切换。
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\obj_pic\superpage.png)
+![](.\DisplayPics\obj_pic\superpage.png)
 
-##### 8）信息查询界面
+##### 信息查询界面
 
 ```python
 class Ui_CheckInfoPage(object)
@@ -545,37 +553,57 @@ class CheckInfoPage(QtWidgets.QWidget, Ui_CheckInfoPage)
 
 进行类型的绑定。将可选择进行的功能与目标函数进行绑定。
 
-###### 页面刷新函数
+**页面刷新函数**
 
 - `def RefreshPageInfo(self)`
+  - 总刷新函数，刷新页面所有内容
 
 - `def RefreshUserList(self)`
+  - 刷新用户列表信息
 
 - `def RefreshBookList(self)`
+  - 刷新图书列表信息
 
 - `def updateBookRankPage(self) -> None`
+  - 刷新排名页
+
+- `def SetBookType(self)`
 
 此类函数负责页面的刷新内容
+
+| param   | type | description      |
+| ------- | ---- | ---------------- |
+| returns | none |                  |
+| inputs  | none | 从表格中获取信息 |
 
 `def MessageOfGettingPath(self, Filepath=None)`
 
 调用内置功能模块，获取用户选择路径。
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\SuperUser\SaveBook.png)
+| param   | type | description      |
+| ------- | ---- | ---------------- |
+| returns | str  | 目标路径         |
+| inputs  | none | 从表格中获取信息 |
 
-`def SetBookType(self)`
+<img src=".\DisplayPics\SuperUser\SaveBook.png" style="zoom:50%;" />
+
+
+
+**核心功能函数**
 
 `def SaveQuery(self)`
 
-
+保存函数，调用pandas的data frame，将目标结构保存到目标地址。创建一个新的excel文件。
 
 `def Query(self)`
 
+查询函数
+
 `def Query_User(self)`
 
-![image-20220516104038630](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\pages\checkinfo.png)
+<img src=".\DisplayPics\pages\checkinfo.png" alt="image-20220516104038630" style="zoom:50%;" />
 
-##### 9）修改用户界面
+##### 修改用户界面
 
 ```python
 class Ui_UserEditPage(object)
@@ -586,34 +614,69 @@ class UserEditPage(QtWidgets.QWidget, Ui_UserEditPage)
 
 `def RefreshViews(self)`
 
+**更新页面函数**
+
 `def UpdateRoleView(self)`
-
-`def ChangeUserInfoAction(self)`
-
-`def AddUserAction(self)`
 
 `def UpdateUserView(self)`
 
 `def SetBookType(self)`
 
-###### 报错函数
+| param   | type | description      |
+| ------- | ---- | ---------------- |
+| returns | none |                  |
+| inputs  | none | 从表格中获取信息 |
+| action  |      | 刷新多个页面     |
 
-`def Echo_Empty_Input(self, ms=None)`
+**核心功能函数**
 
-`def Echo_Fail(self, ms)`
+- `def ChangeUserInfoAction(self)`
+  - 修改用户信息
+- `def AddUserAction(self)`
+  - 添加用户
 
-`def Echo_Success(self)`
+| param   | type | description      |
+| ------- | ---- | ---------------- |
+| returns | none |                  |
+| inputs  | none | 从表格中获取信息 |
 
-![image-20220516104141857](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\pages\useredit.png)
+核心函数调用逻辑如下：
 
-##### 10）修改书籍界面
+<img src=".\DisplayPics\Process_pic\edituser.png" style="zoom:67%;" />
+
+**报错函数**
+
+- `def Echo_Empty_Input(self, ms=None)`
+
+- `def Echo_Fail(self, ms)`
+
+- `def Echo_Success(self)`
+
+| param   | type | description      |
+| ------- | ---- | ---------------- |
+| returns | none |                  |
+| inputs  | none | 从表格中获取信息 |
+
+<img src=".\DisplayPics\pages\useredit.png" alt="image-20220516104141857" style="zoom:50%;" />
+
+##### 修改书籍界面
 
 ```python
 class Ui_BookEditPage(object)
 class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage)
 ```
 
-`def RefreshViews(self)`
+**基本刷新函数**
+
+- `def RefreshViews(self)`
+- `def SetBookType(self)`
+
+| param   | type | description      |
+| ------- | ---- | ---------------- |
+| returns | none |                  |
+| inputs  | none | 从表格中获取信息 |
+
+**核心功能函数**
 
 `def AddBookType(self)`
 
@@ -621,21 +684,30 @@ class BookEditPage(QtWidgets.QWidget, Ui_BookEditPage)
 
 `def AddBookAction(self)`
 
-###### 报错函数
+| param   | type | description          |
+| ------- | ---- | -------------------- |
+| returns | none |                      |
+| inputs  | none | 从表格中获取信息     |
+| action  |      | 访问数据库，修改信息 |
+
+**报错函数**
 
 1. `def Echo_Empty_Input(self, ms=None)`
 2. `def Echo_Fail(self, ms)`
 3. `def Echo_Success(self)`
 
-`def SetBookType(self)`
+| param   | type | description      |
+| ------- | ---- | ---------------- |
+| returns | none |                  |
+| action  |      | 调用标准报错弹窗 |
 
-![image-20220516104222783](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\pages\bookedit.png)
+<img src=".\DisplayPics\pages\bookedit.png" alt="image-20220516104222783" style="zoom:50%;" />
 
-## 2.基本功能函数
+## 基本功能函数
 
-### 1.概览
+### 概览
 
-#### 1)Query
+#### Query
 
 ```python
 def Query_UserRentingHis(user_id)
@@ -663,7 +735,7 @@ def FetchAllUser()
 
 ### 2.详细介绍
 
-#### (1)数据库访问函数
+#### 数据库访问函数
 
 数据库访问函数状态控制：
 
@@ -678,6 +750,8 @@ elif QueryMethod == 'sql_server':
 ```
 
 双内核处理方式，支持多种数据库类型访问。在修改参数后，会修改数据库访问函数的细节调用。
+
+##### 按照条件查询
 
 `def Query_UserRentingHis(user_id)`
 
@@ -818,6 +892,8 @@ elif QueryMethod == 'sql_server':
 | throws   | `RentRefuse("no book remain")` | 借阅验证失败，图书馆没有剩余书目 |
 | throws   | `sql.DatabaseError`            | 数据库访问异常，在外部抓取       |
 
+##### 添加数据类
+
 `def Add_RentHis(UserId, BookId)`
 
 该函数实现借阅功能，会调用`RentCertification`进行借阅有效性的验证。
@@ -914,35 +990,30 @@ TypeId = '{}'
 where BookId = '{}' 
 ```
 
-`def FetchAllBooks()`
+##### 直接获取类
 
-获取所有书本的信息。
+`def FetchAllBooks()`
 
 `def FetchAllRoleTypes()`
 
-获取所有用户权限信息。
-
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-
 `def FetchAllUser()`
 
-用于获取用户数据，该方法下获取所有用户的数据。
+- 获取所有用户权限信息。
+- 获取所有书本的信息。
+- 用于获取用户数据，该方法下获取所有用户的数据。
 
-| param | type | description |
-| ----- | ---- | ----------- |
-|       |      |             |
-|       |      |             |
-|       |      |             |
+| param   | type | description  |
+| ------- | ---- | ------------ |
+| input   | list | 输出查询结果 |
+| returns | none | 无返回       |
 
-## 3.数据库结构详解
+## 数据库结构详解
 
-### (1) 内置数据库
+### 内置数据库
 
-#### 1.表结构
+#### 表结构
 
-##### 1.Book
+##### Book
 
 ```sql
 CREATE TABLE Book (
@@ -969,7 +1040,7 @@ CREATE TABLE Book (
 | `Price`    | int       |      |                                                  |        |          | 0       |
 | `TypeId`   | char      |      | `REFERENCES BookType (TypeId)`，参照`BookType表` |        | not null |         |
 
-##### 2.BookType
+##### BookType
 
 ```sql
 CREATE TABLE BookType (
@@ -986,7 +1057,7 @@ CREATE TABLE BookType (
 | `TypeId`   | CHAR      | true |      |        | not null |         |
 | `TypeName` | CHAR      |      |      |        |          |         |
 
-##### 3.User
+##### User
 
 ```sql
 CREATE TABLE User (
@@ -1009,7 +1080,7 @@ User表存储所有的读者与管理人员信息。
 | `Role`     |           |      | REFERENCES `UserRole` (`RoleId`) |        | not null |         |
 | `Password` | CHAR      |      |                                  |        | not null |         |
 
-##### 4.UserRole
+##### UserRole
 
 ```sql
 CREATE TABLE UserRole (
@@ -1039,7 +1110,7 @@ CREATE TABLE UserRole (
 
 系统借阅的基本参数，由该表决定，后续修改依照该表。
 
-##### 5.RentHistory
+##### RentHistory
 
 ```sql
 CREATE TABLE RentHistory (
@@ -1070,11 +1141,13 @@ CREATE TABLE RentHistory (
 | `RentDay`    | Date      |      |                                 |        | not null | `getdate()` |
 | `ReturnDate` | Date      |      |                                 |        |          | null        |
 
-#### 2.表约束
+#### 视图设计
 
-#### 3.视图设计
+为了方便编程，以及快速查询与修改，在设计设计库的时候，设计了一系列的视图，为后续的功能提供支持。
 
 ##### `BookRemain`
+
+设计视图用于快速查询剩余的书本数量，用于限制借阅次数。
 
 ```sql
 Select Book.BookId, Book.Stock-temp.num remain from Book
@@ -1092,6 +1165,8 @@ on temp.BookId = Book.BookId
 
 ##### `UnreturnPrice`
 
+统计所有用户目前所欠金额。
+
 ```sql
 select User.UserId, Book.BookId,Book.BookName, Book.Price, RentHistory.RentDay
 from Book, RentHistory, User, UserRole
@@ -1103,9 +1178,9 @@ and
 date(RentHistory.RentDay, '+'||cast(UserRole.Duration as string)|| ' day') < date('now')
 ```
 
-
-
 ##### `UserUnReturn_Count`
+
+统计所有用户目前未归还书本的数目。
 
 ```sql
 select User.UserId, temp.times, UserRole.LendingTimes from User, UserRole,
@@ -1119,11 +1194,13 @@ where User.Role = UserRole.RoleId
 and User.UserId = temp.UserId
 ```
 
+#### 触发器设计
 
+sqlite无法支持复杂的触发器结构，但是我们在云端部署的SQL server数据库中，使用触发器，对于我们图书馆管理系统的完整性进行约束。
 
-#### 4.触发器设计
+##### 借阅有效性判断
 
-借阅有效性判断，判读是否还有剩余的书本，以及用户是否还有剩余的借阅限额。
+判读是否还有剩余的书本，以及用户是否还有剩余的借阅限额。
 
 ```sql
 USE [LibraryManageSystem]
@@ -1150,107 +1227,103 @@ end
 end
 ```
 
-### (2) 远程链接数据库
+### 远程链接数据库
 
 同本地数据库结构。
 
 # 四、程序运行结果测试与分析
 
-## 1.GUI展示
+## GUI展示
 
-### （1）普通用户流程展示
+### 普通用户流程展示
 
-#### 1.登录界面
+#### 登录界面
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\LoginPage.png" style="zoom: 50%;" />
+<img src=".\DisplayPics\GeneralUser\LoginPage.png" style="zoom: 50%;" />
 
-##### 1）登录成功
+##### 登录成功
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\Login_Success.png" style="zoom: 50%;" />
+<img src=".\DisplayPics\GeneralUser\Login_Success.png" style="zoom: 50%;" />
 
-##### 2）日历界面
+##### 日历界面
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\LoginPage_2.png" style="zoom: 50%;" />
+<img src=".\DisplayPics\GeneralUser\LoginPage_2.png" style="zoom: 50%;" />
 
-#### 2.注册界面
+#### 注册界面
 
-#### 3.用户界面
+#### 用户界面
 
-##### 1）基本用户信息界面
+##### 基本用户信息界面
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\UserPage.png" style="zoom: 50%;" />
+<img src=".\DisplayPics\GeneralUser\UserPage.png" style="zoom: 50%;" />
 
-##### 2）用户排行榜
+##### 用户排行榜
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\UserRank.png" style="zoom: 50%;" />
+<img src=".\DisplayPics\GeneralUser\UserRank.png" style="zoom: 50%;" />
 
-##### 3）图书排行榜
+##### 图书排行榜
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\UserRank.png" style="zoom: 50%;" />
+<img src=".\DisplayPics\GeneralUser\UserRank.png" style="zoom: 50%;" />
 
-#### 4.借阅界面
+#### 借阅界面
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\RentPage.png" style="zoom: 50%;" />
+<img src=".\DisplayPics\GeneralUser\RentPage.png" style="zoom: 50%;" />
 
-#### 5.归还界面
+#### 归还界面
 
-##### 1）初始
+##### 初始
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\ReturnPage.png" style="zoom: 50%;" />
+<img src=".\DisplayPics\GeneralUser\ReturnPage.png" style="zoom: 50%;" />
 
-##### 2）归还操作
+##### 归还操作
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\ReturnAction.png" style="zoom: 50%;" />
+<img src=".\DisplayPics\GeneralUser\ReturnAction.png" style="zoom: 50%;" />
 
-#### 6.续借界面
+#### 续借界面
 
 ##### 未有过期书目：
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\PayMoney.png" style="zoom:80%;" />
+<img src=".\DisplayPics\GeneralUser\PayMoney.png" style="zoom:80%;" />
 
 ##### 有过期书目：
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\Debt.png" style="zoom:50%;" />
+<img src=".\DisplayPics\GeneralUser\Debt.png" style="zoom:50%;" />
 
-#### 7.尝试访问管理权限
+#### 尝试访问管理权限
 
-<img src="D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\GeneralUser\FailOfSuper.png" style="zoom: 50%;" />
+<img src=".\DisplayPics\GeneralUser\FailOfSuper.png" style="zoom: 50%;" />
 
-### （2）超级用户流程展示
+### 超级用户流程展示
 
-#### 1.用户界面
+#### 用户界面
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\SuperUser\UserPage.png)
+<img src=".\DisplayPics\SuperUser\UserPage.png" style="zoom:50%;" />
 
-#### 2.权限界面
+#### 权限界面
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\SuperUser\SuperPage.png)
+<img src=".\DisplayPics\SuperUser\SuperPage.png" style="zoom:50%;" />
 
-#### 3.查询信息界面
+#### 查询信息界面
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\SuperUser\CheckInfo_BookRanked.png)
+<img src=".\DisplayPics\SuperUser\CheckInfo_BookRanked.png" style="zoom:50%;" />
 
-#### 4.修改读者信息界面
+#### 修改读者信息界面
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\SuperUser\ChangeUserInfoBefore.png)
+<img src=".\DisplayPics\SuperUser\ChangeUserInfoBefore.png" style="zoom:50%;" />
 
-#### 5.修改书本信息界面
+#### 修改书本信息界面
 
-## 2.数据输出展示
+## 数据输出展示
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\SuperUser\SaveBook.png)
+<img src=".\DisplayPics\SuperUser\SaveBook.png" style="zoom: 33%;" />
 
 
 
-![](D:\Coding\PythonProjects\Library_Manage_System\DisplayPics\SuperUser\SaveUserRes.png)
-
-## 3.数据库内容展示
-
-## 4.软件性能展示
+![](.\DisplayPics\SuperUser\SaveUserRes.png)
 
 # 五、结论与心得
 
-## 1.任务负责
+## 任务负责
 
 在本次的课程实践中，我负责该管理系统的全部的设计与实现工作。包括但不限于以下工作：
 
@@ -1262,15 +1335,15 @@ end
 6. 业务逻辑编码实现
 7. 成果测试检验
 
-## 2.收获
+## 收获
 
-### 1) 概念收获
+### 概念收获
 
 在本次的程序设计课程设计中，我收获了许多。首先是更加了解了软件工程的实际含义，与在实际工程中所需要的思考方式与想法。
 
 同时更加深入地了解数据库的设计与创建过程。
 
-![image-20220516105240297](C:\Users\15191\AppData\Roaming\Typora\typora-user-images\image-20220516105240297.png)
+<img src="C:\Users\15191\AppData\Roaming\Typora\typora-user-images\image-20220516105240297.png" alt="image-20220516105240297" style="zoom:50%;" />
 
 了解数据库各级的形成过程：
 
@@ -1282,25 +1355,27 @@ end
 
 物理设计阶段：根据DBMS特点和处理的需要，进行物理存储安排，建立索引，形成数据库内模式。
 
-### 2) 技术收获
+### 技术收获
 
 在本次的项目中其实收获到的最大的好处就是，将之前学习到的很多内容，进行了一个梳理，同时也对知识点有了更深的印象。使得自己对于哪些python以及sql基础知识有了一个更好的理解，同时对其会产生的问题有了一个具体的了解，当我在遇到的时候就会懂得如何去修改，以及能及时发现其中的错误。
 
-#### 1.前端技术收获
+#### 前端技术收获
 
 深入了解学习python qt前端的框架体系。了解了前端可视化界面的总体结构。
 
 ![](https://img-blog.csdnimg.cn/2018112115221670.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lqX2FuZHJvaWRfZGV2ZWxvcA==,size_16,color_FFFFFF,t_70)
 
-#### 2.数据库技术收获
+#### 数据库技术收获
 
 在学习数据库和数据表创建和修改时，了解到表是建立关系数据库的基本结构，用来存储数据具有已定义的属性，在表的操作过程中，有查看表信息、查看表属性、修改表中的数据、删除表中的数据及修改表和删除表的操作。
 
 从实践中让我更明白一些知识，表是数据最重要的一个数据对象，表的创建好坏直接关系到数数据库的成败，表的内容是越具体越好，但是也不能太繁琐，对表的规划和理解更加深刻。
 
-## 3.遇到困难
+同时更加深刻地了解到了不同数据库之间的不同，以及对应工作环境下的区别。
 
-### 1）技术困难
+## 遇到困难
+
+### 技术困难
 
 1. qt表格类的使用
    - qt整个框架是基于c++构建的，移植到python下实际上底层内核还是使用c++编译的，无法直接查看源代码。对于部分功能的理解会有一点障碍。
@@ -1309,9 +1384,9 @@ end
    - sqlite作为轻量级数据库，实际上数据的管理功能是有限的。
    - 在内置的功能里，不支持复杂的触发结构，需要程序员自行设计。
 
-## 4.未实现功能
+## 未实现功能
 
-### 1）用户交互层面
+### 用户交互层面
 
 用户交互设计依旧不够友好，对于部分操作还是分开进行。
 
@@ -1322,10 +1397,11 @@ end
 
 对于用户的可视化界面还不够美观。
 
-### 2）数据库信息存储层面
+### 数据库信息存储层面
 
 - 目前而言数据模型还没有完善，对于用户只存储了基本信息，对于对书籍内容只存储了基本信息，需要后续进行拓展。
+- 数据库数据的修改具有局限性，只允许管理员进行数据的修改，而用户无法对于自己的信息，进行直接修改。使得操作有时不够人性化。
 
-### 3）网络连接层面
+### 网络连接层面
 
-目前远程数据库只是有个雏形，目前只使用了local服务端进行模拟。
+目前远程数据库只是有个雏形，目前只使用了local服务端进行模拟，总体功能还有待提升。
